@@ -5,24 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="327168de-503a-4f35-bd70-fbea6d1cf33c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game1-Collectathon/Scenes/Scene-Collectathon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game1-Collectathon/Scenes/Scene-Collectathon.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game1-Collectathon/Scripts/Collectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game1-Collectathon/Scripts/Collectable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game1-Collectathon/Scripts/GameManager_Collectathon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game1-Collectathon/Scripts/GameManager_Collectathon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE340/Game1-Collectathon/Cat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE340/Game1-Collectathon/Cat.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground2.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/CRE340/Game1-Collectathon/Cat.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2mWJp6XqFIIHrRhMs81K8XCATl3" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -37,7 +39,6 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -101,6 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727186581907</updated>
       <workItem from="1727186583950" duration="2247000" />
+      <workItem from="1727688864187" duration="2438000" />
     </task>
     <servers />
   </component>
