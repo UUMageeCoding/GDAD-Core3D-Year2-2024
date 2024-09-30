@@ -269,30 +269,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307122897}
-  - component: {fileID: 307122896}
+  - component: {fileID: 307122898}
   m_Layer: 0
-  m_Name: Collectible Spawner
+  m_Name: Item Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &307122896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307122895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2d409f58c18a541aab772baf9556bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectiblePrefab: {fileID: 3063487966419773094, guid: 67e91ad03df07d2498496f1ace5ee378,
-    type: 3}
-  numberOfCollectibles: 10
-  spawnArea: {x: 22, y: 0, z: 22}
 --- !u!4 &307122897
 Transform:
   m_ObjectHideFlags: 0
@@ -308,6 +292,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307122898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307122895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009e6a952221b664b8e06dcc4347bf1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPotionPrefab: {fileID: 4177872679167233098, guid: d03bece12d812d34a9b65fea04ade11b,
+    type: 3}
+  manaPotionPrefab: {fileID: 4596649149045805454, guid: fde64120c589a8a49bc8acfedab8114b,
+    type: 3}
+  numberOfHealthPotions: 3
+  numberOfManaPotions: 3
 --- !u!1 &312829435
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +816,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1210621414}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &445216947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445216949}
+  - component: {fileID: 445216948}
+  m_Layer: 0
+  m_Name: Logic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &445216948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445216947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c39275fb2170542a2c75d1358ab472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &445216949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445216947}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &448289505
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,7 +880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &448289507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2511,7 +2557,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616796546}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 4
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -2960,7 +3006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1758604975
 Transform:
   m_ObjectHideFlags: 0
@@ -2983,7 +3029,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758604974}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4eabb074c0bea45488c4a0993a058b41, type: 3}
   m_Name: 
@@ -3511,3 +3557,4 @@ SceneRoots:
   - {fileID: 448289511}
   - {fileID: 700346416}
   - {fileID: 418530105}
+  - {fileID: 445216949}
