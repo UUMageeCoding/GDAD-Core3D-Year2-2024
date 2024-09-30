@@ -44,7 +44,7 @@ public class ItemSpawner : MonoBehaviour
         for (int i = -numberOfItemsEachSide; i <= numberOfItemsEachSide; i++)
         {
             // Offset the Y position to differentiate between HealthPotions and ManaPotions
-            Vector3 position = new Vector3(i * spacing, -0.5f, 2.0f);  // Z position is set to 2.0 to avoid overlap
+            Vector3 position = new Vector3(i * spacing, -0.5f, -4.0f);  // Z position is set to 2.0 to avoid overlap
 
             // Instantiate the ManaPotion prefab at the calculated position
             GameObject newManaPotion = Instantiate(manaPotionPrefab, position, Quaternion.identity);

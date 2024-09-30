@@ -21,7 +21,13 @@ public class ItemClick : MonoBehaviour
                 // If an Item component is found, call its DisplayInfo method
                 if (clickedItem != null)
                 {
+                    // Call the DisplayInfo method of the clicked item
+                    // ** note this is a virtual method in the base class that can be overridden in derived classes
                     clickedItem.DisplayInfo();
+                    
+                    // Call the SayHello method of the clicked item
+                    // ** note this is a non-virtual method in the base class that cannot be overridden in derived classes
+                    clickedItem.SayHello();
                 }
             }
         }

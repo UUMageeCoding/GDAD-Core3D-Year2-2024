@@ -1,29 +1,29 @@
 using UnityEngine;
 
-// Derived class ManaPotion that overrides DisplayInfo
 public class ManaPotion : Item
 {
     public int manaRestoreAmount;
+    public int minRestoreAmount = 20; // Minimum restore amount for mana
+    public int maxRestoreAmount = 50; // Maximum restore amount for mana
 
     // Default constructor
     public ManaPotion()
     {
         itemName = "Mana Potion";
         description = "A potion that restores mana.";
-        manaRestoreAmount = 30;
-        Debug.Log("1st ManaPotion Constructor Called");
     }
 
-    // Constructor with parameters using 'base'
-    public ManaPotion(string newItemName, string newDescription, int newManaAmount) : base(newItemName, newDescription)
+    // Called when the object is instantiated
+    private void Start()
     {
-        manaRestoreAmount = newManaAmount;
-        Debug.Log("2nd ManaPotion Constructor Called");
+        // Assign a random value for manaRestoreAmount within the specified range
+        manaRestoreAmount = Random.Range(minRestoreAmount, maxRestoreAmount);
+        Debug.Log($"ManaPotion: Random restore amount set to {manaRestoreAmount}.");
     }
 
     // Override method to display specific mana potion info
     public override void DisplayInfo()
     {
-        Debug.Log($"{itemName}: Restores {manaRestoreAmount} mana points.");
+        Debug.Log($"{itemName}: Restores {manaRestoreAmount} mana points. (ManaPotion Class DisplayInfo Called)");
     }
 }

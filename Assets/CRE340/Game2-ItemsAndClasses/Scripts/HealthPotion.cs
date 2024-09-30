@@ -1,29 +1,29 @@
 using UnityEngine;
 
-// Derived class HealthPotion that overrides DisplayInfo
 public class HealthPotion : Item
 {
     public int healthRestoreAmount;
+    public int minRestoreAmount = 30; // Minimum restore amount for health
+    public int maxRestoreAmount = 70; // Maximum restore amount for health
 
     // Default constructor
     public HealthPotion()
     {
         itemName = "Health Potion";
         description = "A potion that restores health.";
-        healthRestoreAmount = 50;
-        Debug.Log("1st HealthPotion Constructor Called");
     }
 
-    // Constructor with parameters using 'base'
-    public HealthPotion(string newItemName, string newDescription, int newHealthAmount) : base(newItemName, newDescription)
+    // Called when the object is instantiated
+    private void Start()
     {
-        healthRestoreAmount = newHealthAmount;
-        Debug.Log("2nd HealthPotion Constructor Called");
+        // Assign a random value for healthRestoreAmount within the specified range
+        healthRestoreAmount = Random.Range(minRestoreAmount, maxRestoreAmount);
+        Debug.Log($"HealthPotion: Random restore amount set to {healthRestoreAmount}.");
     }
 
     // Override method to display specific health potion info
     public override void DisplayInfo()
     {
-        Debug.Log($"{itemName}: Restores {healthRestoreAmount} health points.");
+        Debug.Log($"{itemName}: Restores {healthRestoreAmount} health points. (HealthPotion Class DisplayInfo Called)");
     }
 }
