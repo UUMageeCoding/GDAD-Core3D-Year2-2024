@@ -269,7 +269,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307122897}
-  - component: {fileID: 307122898}
   m_Layer: 0
   m_Name: Item Spawner
   m_TagString: Untagged
@@ -292,24 +291,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &307122898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307122895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009e6a952221b664b8e06dcc4347bf1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPotionPrefab: {fileID: 4177872679167233098, guid: d03bece12d812d34a9b65fea04ade11b,
-    type: 3}
-  manaPotionPrefab: {fileID: 4596649149045805454, guid: fde64120c589a8a49bc8acfedab8114b,
-    type: 3}
-  numberOfItemsEachSide: 2
-  spacing: 3
 --- !u!1 &312829435
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,26 +806,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 445216949}
-  - component: {fileID: 445216948}
   m_Layer: 0
-  m_Name: Logic
+  m_Name: Logic - Item Click
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &445216948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445216947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c39275fb2170542a2c75d1358ab472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &445216949
 Transform:
   m_ObjectHideFlags: 0

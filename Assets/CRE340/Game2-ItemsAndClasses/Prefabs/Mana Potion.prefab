@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3296521168451574481}
   - component: {fileID: 6840177952589635534}
   - component: {fileID: 4159911558239757937}
-  - component: {fileID: 1228551069469341505}
   m_Layer: 0
   m_Name: Mana Potion
   m_TagString: Untagged
@@ -106,16 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1228551069469341505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4596649149045805454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9931d1bbe3a994f92ba1c788bac274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manaRestoreAmount: 30
