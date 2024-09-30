@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 445216949}
   - component: {fileID: 445216948}
   m_Layer: 0
-  m_Name: Logic
+  m_Name: Logic - Item Click
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
