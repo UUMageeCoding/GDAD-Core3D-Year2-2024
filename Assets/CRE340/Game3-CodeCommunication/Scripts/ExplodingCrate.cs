@@ -17,11 +17,18 @@ public class ExplodingCrate : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        // Trigger the OnObjectDamaged event
+        HealthEventManager.OnObjectDamaged?.Invoke(health);
+
         ShowHitEffect();
 
         if (health <= 0)
         {
             Explode();
+
+            // Trigger the OnObjectDestroyed event
+            HealthEventManager.OnObjectDestroyed?.Invoke(health);
             Destroy(gameObject);
         }
     }

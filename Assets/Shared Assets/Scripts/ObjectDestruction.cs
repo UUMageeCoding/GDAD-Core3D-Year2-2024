@@ -36,7 +36,7 @@ public class ObjectDestruction : MonoBehaviour
         if (destroyAfterTime)
         {
             Destroy(gameObject, destructionTime);
-            Debug.Log("Destroyed: " + gameObject.name + " after " + destructionTime + " seconds of time");
+            //Debug.Log("Destroyed: " + gameObject.name + " after " + destructionTime + " seconds of time");
         }
     }
 
@@ -52,7 +52,7 @@ public class ObjectDestruction : MonoBehaviour
             if (Time.time - lastMoveTime > idleTimeThreshold)
             {
                 Destroy(gameObject);
-                Debug.Log("Destroyed: " + gameObject.name + " after " + idleTimeThreshold + " seconds of inactivity");
+                //Debug.Log("Destroyed: " + gameObject.name + " after " + idleTimeThreshold + " seconds of inactivity");
             }
         }
         else
@@ -68,7 +68,7 @@ public class ObjectDestruction : MonoBehaviour
         if (destroyOnCollision && collisionCount >= collisionDestroyThreshold)
         {
             Destroy(gameObject);
-            Debug.Log("Destroyed: " + gameObject.name + " after " + collisionCount + " collisions "+ "(" + collision.gameObject.name + ")");
+            //Debug.Log("Destroyed: " + gameObject.name + " after " + collisionCount + " collisions "+ "(" + collision.gameObject.name + ")");
         }
     }
     
@@ -79,7 +79,7 @@ public class ObjectDestruction : MonoBehaviour
         if (destroyOnCollision && collisionCount >= collisionDestroyThreshold)
         {
             Destroy(gameObject);
-            Debug.Log("Destroyed: " + gameObject.name + " after " + collisionCount + " collisions "+ "(" + collision.gameObject.name + ")");
+            //Debug.Log("Destroyed: " + gameObject.name + " after " + collisionCount + " collisions "+ "(" + collision.gameObject.name + ")");
         }
     }
 
@@ -92,7 +92,7 @@ public class ObjectDestruction : MonoBehaviour
         {
             isOffScreen = true;
             Destroy(gameObject);
-            Debug.Log("Destroyed: " + gameObject.name + " off screen");
+            //Debug.Log("Destroyed: " + gameObject.name + " off screen");
         }
     }
 }
