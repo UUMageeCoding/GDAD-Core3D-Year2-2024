@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StarterAssets/FirstPersonController/Scripts/FirstPersonController.cs.meta
+guid: 55919ac34a26952479f3fc91f777b2fa
+========
+guid: f472d1674ef420d4f8af233565db1301
+>>>>>>>> CRE340-Week2-Completed:Assets/CRE340/Game2-ItemsAndClasses/Scripts/HealthPotion.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
