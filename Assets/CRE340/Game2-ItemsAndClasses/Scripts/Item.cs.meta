@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/CRE343/Scripts/AnimationTester.cs.meta
+guid: 572bd3cb4470e85468ef18441b1dbca1
+========
+guid: e1221e5a8d5e38a489a18fe62ec44f55
+>>>>>>>> CRE340-Week2-Completed:Assets/CRE340/Game2-ItemsAndClasses/Scripts/Item.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
