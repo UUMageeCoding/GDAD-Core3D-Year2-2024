@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemClick : MonoBehaviour
+public class ItemClick_Items : MonoBehaviour
 {
     // Update is called once per frame
     void Update()
