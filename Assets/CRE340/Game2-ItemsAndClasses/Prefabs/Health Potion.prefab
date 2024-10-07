@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2015268381685285890}
   - component: {fileID: 2284904288700869366}
   - component: {fileID: 2289656954703230128}
-  - component: {fileID: 7316409608242532595}
+  - component: {fileID: 5615349600241235882}
   m_Layer: 0
   m_Name: Health Potion
   m_TagString: Untagged
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7316409608242532595
+--- !u!114 &5615349600241235882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4177872679167233098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f472d1674ef420d4f8af233565db1301, type: 3}
+  m_Script: {fileID: 11500000, guid: 6978b9e264b75434eb7715a93f0cc417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthRestoreAmount: 50
+  healthRestoreAmount: 0
+  minRestoreAmount: 30
+  maxRestoreAmount: 70
