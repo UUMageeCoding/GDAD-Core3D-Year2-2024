@@ -16,13 +16,13 @@ public class EventListener : MonoBehaviour
         HealthEventManager.OnObjectDestroyed -= HandleObjectDestroyed;
     }
 
-    private void HandleObjectDamaged(int remainingHealth)
+    private void HandleObjectDamaged(string name, int remainingHealth)
     {
-        Debug.Log($"An object was damaged! Remaining Health: {remainingHealth}");
+        Debug.Log($"An object called {name} was damaged! Remaining Health: {remainingHealth}");
     }
 
-    private void HandleObjectDestroyed(int remainingHealth)
+    private void HandleObjectDestroyed(string name,int remainingHealth)
     {
-        Debug.Log("An object was destroyed!");
+        Debug.Log($"An object called {name} was destroyed!");
     }
 }

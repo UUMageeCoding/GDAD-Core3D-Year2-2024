@@ -4,7 +4,6 @@ public class EventSender : MonoBehaviour
 {
     // Define the delegate type for the OnFire event
     public delegate void FireEventHandler(float scale, float speed);
-    
     // Define the event based on the delegate
     public static event FireEventHandler OnFire;
 
