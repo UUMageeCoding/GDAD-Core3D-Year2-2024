@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="327168de-503a-4f35-bd70-fbea6d1cf33c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/CRE340/Game1-Collectathon/Cat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/CRE340/Game1-Collectathon/Cat.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared Assets/Materials &amp; Textures/Ground/Materials/Ground2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game2-ItemsAndClasses/Scripts/ItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game2-ItemsAndClasses/Scripts/ItemSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/FX_Explosion_Sparks.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/FX_Explosion_Sparks.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Crate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ExplodingCrate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ExplodingCrate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/HealthEventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/HealthEventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE343/Materials/M_HologramHLSL.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_HologramHLSL.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/CRE340/Game1-Collectathon/Cat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Test/TestIDamagable.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,28 +39,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\niall\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\niall\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\niall\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\niall\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\niall\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\niall\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.32f1\Editor\Unity.exe" />
@@ -103,6 +109,8 @@
       <updated>1727186581907</updated>
       <workItem from="1727186583950" duration="2247000" />
       <workItem from="1727688864187" duration="2438000" />
+      <workItem from="1728310991883" duration="211000" />
+      <workItem from="1728387771816" duration="3903000" />
     </task>
     <servers />
   </component>
