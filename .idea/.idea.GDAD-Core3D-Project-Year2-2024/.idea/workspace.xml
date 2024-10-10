@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="327168de-503a-4f35-bd70-fbea6d1cf33c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game2-ItemsAndClasses/Scripts/ItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game2-ItemsAndClasses/Scripts/ItemSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/FX_Explosion_Sparks.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/FX_Explosion_Sparks.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Crate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventSender.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ExplodingCrate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ExplodingCrate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/HealthEventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/HealthEventManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE343/Materials/M_HologramHLSL.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_HologramHLSL.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_DisolveHLSL.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_DisolveHLSL.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_EmissionPulse.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_EmissionPulse.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_Hologram.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_Hologram.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE343/Scenes/Scene6-3D-Material&amp;Shaders-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE343/Scenes/Scene6-3D-Material&amp;Shaders-1.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +107,7 @@
       <workItem from="1727688864187" duration="2438000" />
       <workItem from="1728310991883" duration="211000" />
       <workItem from="1728387771816" duration="3903000" />
+      <workItem from="1728556797899" duration="483000" />
     </task>
     <servers />
   </component>
