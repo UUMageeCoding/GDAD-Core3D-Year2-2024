@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414622e6ea900c04689ddb44f0079364, type: 3}
   m_Name: BasicEnemy2
   m_EditorClassIdentifier: 
-  enemyName: Basic Bad Guy - Blue
+  enemyName: Bad Guy - Blue
   health: 4
   speed: 10
   enemyColor: {r: 0, g: 0.4100864, b: 1, a: 1}
