@@ -6,7 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="327168de-503a-4f35-bd70-fbea6d1cf33c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/Enemy 1 Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/Enemy 1 Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/Enemy 2 Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Prefabs/Enemy 2 Variant.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication-Part2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication-Part2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Crate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/EventListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ExplodingCrate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ExplodingCrate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/HealthEventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/HealthEventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ScriptableObjects/BasicEnemy1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ScriptableObjects/BasicEnemy1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ScriptableObjects/BasicEnemy2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ScriptableObjects/BasicEnemy2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ScriptableObjects/EnemyData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/ScriptableObjects/EnemyData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Spawn/ObjectSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scripts/Spawn/ObjectSpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

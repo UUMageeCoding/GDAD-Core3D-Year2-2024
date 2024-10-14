@@ -3,21 +3,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
-    public EnemyData enemyData; // Reference to the EnemyData scriptable object
-    
     public int health = 10;
     
     private Material mat;
     private Color originalColor;
-    
-    private void Awake()
-    {
-        // Apply the data from the ScriptableObject to the enemy
-        gameObject.name = enemyData.enemyName;
-        GetComponent<Renderer>().material.color = enemyData.enemyColor;
-
-        Debug.Log($"Enemy {enemyData.enemyName} spawned with {enemyData.health} health and {enemyData.speed} speed.");
-    }
     
     private void Start(){
         mat = GetComponent<Renderer>().material;
@@ -29,7 +18,7 @@ public class Enemy : MonoBehaviour, IDamagable
         health -= damage;
 
         // Trigger the OnObjectDamaged event
-        HealthEventManager.OnObjectDamaged?.Invoke(gameObject.name, health);
+        HealthEventManager.OnObjectDamaged?.Invoke( health);
 
         ShowHitEffect();
 
@@ -38,7 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable
             Die();
 
             // Trigger the OnObjectDestroyed event
-            HealthEventManager.OnObjectDestroyed?.Invoke(gameObject.name, health);
+            HealthEventManager.OnObjectDestroyed?.Invoke( health);
         }
     }
     
