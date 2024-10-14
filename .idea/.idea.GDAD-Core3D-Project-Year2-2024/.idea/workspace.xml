@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="327168de-503a-4f35-bd70-fbea6d1cf33c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDAD-Core3D-Project-Year2-2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CRE343/Materials/M_Toon.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CRE343/Materials/M_Toon.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication-Part2.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CRE340/Game3-CodeCommunication/Scenes/Scene-CodeCommunication-Part2.unity.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <workItem from="1727688864187" duration="2438000" />
       <workItem from="1728310991883" duration="211000" />
       <workItem from="1728387771816" duration="3903000" />
-      <workItem from="1728896632192" duration="1071000" />
+      <workItem from="1728896632192" duration="1856000" />
     </task>
     <servers />
   </component>
