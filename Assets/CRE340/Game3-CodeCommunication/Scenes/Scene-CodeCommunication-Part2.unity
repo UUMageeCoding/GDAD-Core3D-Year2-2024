@@ -5646,6 +5646,16 @@ PrefabInstance:
       objectReference: {fileID: 330585545}
     - target: {fileID: 8172486550298442601, guid: 99717ee5b370d314587ee4d63a67ee3b,
         type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172486550298442601, guid: 99717ee5b370d314587ee4d63a67ee3b,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172486550298442601, guid: 99717ee5b370d314587ee4d63a67ee3b,
+        type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 330585546}
