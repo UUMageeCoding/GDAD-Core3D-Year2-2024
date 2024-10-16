@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Walk Of Fame skybox
+  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _SUNDISK_HIGH_QUALITY
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AtmosphereThickness: 1
+    - _Exposure: 1.3
+    - _Intensity: 1
+    - _SunDisk: 2
+    - _SunSize: 0.04
+    - _SunSizeConvergence: 5
+    m_Colors:
+    - _GroundColor: {r: 0.36899996, g: 0.34899998, b: 0.34099993, a: 1}
+    - _SHAb: {r: 0.23791556, g: 0.39783636, b: -0.0621705, a: 0.6414774}
+    - _SHAg: {r: 0.28641763, g: 0.17330815, b: -0.06185164, a: 0.596977}
+    - _SHAr: {r: 0.31260213, g: 0.048113335, b: -0.065810435, a: 0.6412931}
+    - _SHBb: {r: 0.005551921, g: -0.012807154, b: -0.27403575, a: -0.1296935}
+    - _SHBg: {r: -0.06724497, g: -0.0016070907, b: -0.2786472, a: -0.12925568}
+    - _SHBr: {r: -0.1414523, g: 0.007598341, b: -0.3177032, a: -0.1292727}
+    - _SHC: {r: 0.25352085, g: 0.1725745, b: 0.07377058, a: 0}
+    - _SkyTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_BuildTextureStacks: []
