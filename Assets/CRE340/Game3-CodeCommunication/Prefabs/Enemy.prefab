@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 5282003982686670405}
   - component: {fileID: 8213651044925504877}
   - component: {fileID: 3149809021537284936}
+  - component: {fileID: 1664679125019967939}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,5 +149,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf73790f31445044ae6023c971d28b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
-  health: 4
+  enemyData: {fileID: 11400000, guid: 16c7590885f0fcf479df9d7f69ddbd61, type: 2}
+  dieEffectPrefab: {fileID: 2266959994559975120, guid: 05b09e4a1f3b1d44bb86d2f25468b730,
+    type: 3}
+  damage: 10
+--- !u!114 &1664679125019967939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041641523765857172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99cdde66a9393c42ad9ea13cd71dbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

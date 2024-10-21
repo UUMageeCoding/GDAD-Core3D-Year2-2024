@@ -6,14 +6,17 @@ public class FixedCameraMovementController : MonoBehaviour
 {
     public float moveSpeed = 6f;
     public float rotationSpeed = 720f;
-    public Transform cameraTransform; // Reference to the fixed camera transform
+    private Transform cameraTransform; // Reference to the fixed camera transform
 
     private Rigidbody myRigidbody;
     private Vector3 movement;
 
-    void Start()
+    void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
+        
+        //get the camera transform from the main camera
+        cameraTransform = Camera.main.transform;
     }
 
     void Update()

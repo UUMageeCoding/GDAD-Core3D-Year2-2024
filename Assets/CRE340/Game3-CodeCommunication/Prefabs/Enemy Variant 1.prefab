@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2664548837686694121
+--- !u!1001 &7515362332695928648
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8950002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
@@ -21,27 +21,27 @@ PrefabInstance:
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.854999
+      value: 4.96
       objectReference: {fileID: 0}
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710677
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
@@ -51,28 +51,17 @@ PrefabInstance:
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3149809021537284936, guid: 1a91820ca61272a4290fe169ebaa966b,
-        type: 3}
-      propertyPath: enemyData
-      value: 
-      objectReference: {fileID: 11400000, guid: 99c209bf67f8d1f488724bed53e21e1b,
-        type: 2}
     - target: {fileID: 6041641523765857172, guid: 1a91820ca61272a4290fe169ebaa966b,
         type: 3}
       propertyPath: m_Name
-      value: Enemy 2 Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 6041641523765857172, guid: 1a91820ca61272a4290fe169ebaa966b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: Enemy Variant 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
