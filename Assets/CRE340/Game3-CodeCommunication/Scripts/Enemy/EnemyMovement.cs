@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
     private void LocatePlayer()
     {
         // Find the player in the scene if the player exaists
-        if (player == null)
+        if (player == null && GameObject.FindGameObjectWithTag("Player") != null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }

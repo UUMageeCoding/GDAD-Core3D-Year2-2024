@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 0, z: 0}
+  spawnDelay: 0.5
 --- !u!1 &223660204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1352,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 418530105}
-  - component: {fileID: 418530106}
   - component: {fileID: 418530107}
   m_Layer: 0
   m_Name: UI
@@ -1377,18 +1377,6 @@ Transform:
   - {fileID: 1869754903}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &418530106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 418530104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4af0a2a3cab9704da58a09286da941d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &418530107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5893,7 +5881,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2095147851}
-  - component: {fileID: 2095147850}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -5901,23 +5888,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2095147850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2095147849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 917b4abce19a36b40b4310286512afa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4608686138521773477, guid: 99717ee5b370d314587ee4d63a67ee3b,
-    type: 3}
-  playerName: Player1
-  playerHealth: 100
-  score: 0
 --- !u!4 &2095147851
 Transform:
   m_ObjectHideFlags: 0
