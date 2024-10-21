@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton Implementation
+    
     // Singleton instance
     private static GameManager instance;
 
@@ -24,6 +26,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+    
+    
+
+    #region Properties and Fields
+    
     // Player reference (use your Player class)
     public GameObject playerPrefab;
     private Player playerInstance;
@@ -63,14 +71,21 @@ public class GameManager : MonoBehaviour
             UIEventHandler.ScoreChanged(score); // Notify listeners
         }
     }
+    #endregion
 
+
+
+    #region Unity Methods
     private void Start()
     {
-        // Initialize with default values (optional)
-        Debug.Log("GameManager initialized with default player state.");
-        SetPlayerName(playerInstance.name);
+        // Initialize with default values (optional for later use)
+        Debug.Log("GameManager initialized with default player state:");
     }
+    #endregion
 
+
+    #region Custom Public Methods
+    
     // Method to instantiate the player and keep track of its instance
     public void SpawnPlayer(Vector3 spawnPosition)
     {
@@ -78,6 +93,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject playerObject = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
             playerInstance = playerObject.GetComponent<Player>();
+            SetPlayerName(playerInstance.name);
+            SetPlayerHealth(playerInstance.health);
         }
     }
 
@@ -109,4 +126,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    
+    #endregion
+
 }

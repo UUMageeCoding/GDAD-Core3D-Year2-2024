@@ -20,6 +20,8 @@ public class Crate : MonoBehaviour, IDamagable
         // Trigger the OnObjectDamaged event
         HealthEventManager.OnObjectDamaged?.Invoke(gameObject.name, health);
 
+        ShowHitEffect();
+        
         if (health <= 0)
         {
             // Trigger the OnObjectDestroyed event

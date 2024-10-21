@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class UIEventHandler : MonoBehaviour
+public class UIEventHandler
 {
     // Events to notify listeners when player state changes
     public static event Action<string> OnPlayerNameChanged;

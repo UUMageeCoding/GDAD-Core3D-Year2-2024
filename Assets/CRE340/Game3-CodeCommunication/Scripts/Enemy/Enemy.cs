@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IDamagable
         // Apply the data from the ScriptableObject to the enemy
         gameObject.name = enemyData.enemyName;
         health = enemyData.health;
+        damage = enemyData.damage;
         GetComponent<Renderer>().material.color = enemyData.enemyColor;
 
         Debug.Log($"Enemy {enemyData.enemyName} spawned with {enemyData.health} health and {enemyData.speed} speed.");
