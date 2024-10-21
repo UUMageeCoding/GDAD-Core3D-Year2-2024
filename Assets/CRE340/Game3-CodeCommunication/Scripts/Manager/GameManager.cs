@@ -34,9 +34,35 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int score = 0;                 // Default score
 
     // Public properties to access these fields but prevent external modification
-    public string PlayerName { get { return playerName; } private set { playerName = value; } }
-    public int PlayerHealth { get { return playerHealth; } private set { playerHealth = value; } }
-    public int Score { get { return score; } private set { score = value; } }
+    public string PlayerName
+    {
+        get { return playerName; }
+        private set
+        {
+            playerName = value;
+            UIEventHandler.PlayerNameChanged(playerName); // Notify listeners
+        }
+    }
+
+    public int PlayerHealth
+    {
+        get { return playerHealth; }
+        private set
+        {
+            playerHealth = value;
+            UIEventHandler.PlayerHealthChanged(playerHealth); // Notify listeners
+        }
+    }
+
+    public int Score
+    {
+        get { return score; }
+        private set
+        {
+            score = value;
+            UIEventHandler.ScoreChanged(score); // Notify listeners
+        }
+    }
 
     private void Start()
     {
@@ -65,12 +91,10 @@ public class GameManager : MonoBehaviour
     public void SetPlayerHealth(int health)
     {
         PlayerHealth = Mathf.Clamp(health, 0, 100); // Ensure health stays between 0 and 100
-        // Optionally, check for player death
         if (PlayerHealth <= 0)
         {
             // Handle player death, such as restarting level or showing game over
-            //RestartLevel();
-            Invoke("RestartLevel",5F);
+            Invoke("RestartLevel", 5F);
         }
     }
 
