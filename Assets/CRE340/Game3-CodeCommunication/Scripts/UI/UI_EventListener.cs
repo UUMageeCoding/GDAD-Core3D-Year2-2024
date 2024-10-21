@@ -1,13 +1,17 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; // Use TextMeshPro for UI elements
 
-public class UIListener : MonoBehaviour
+public class UI_EventListener : MonoBehaviour
 {
-    // Reference to the UI elements
-    public TextMeshProUGUI playerNameText;
-    public TextMeshProUGUI playerHealthText;
-    public TextMeshProUGUI scoreText;
+    private UI_Display uiDisplay;
+
+    private void Awake()
+    {
+        // Get the UI_Display component
+        uiDisplay = GetComponent<UI_Display>();
+    }
 
     private void OnEnable()
     {
@@ -28,27 +32,27 @@ public class UIListener : MonoBehaviour
     // Update the player name in the UI
     private void UpdatePlayerName(string playerName)
     {
-        if (playerNameText != null)
+        if(uiDisplay != null)
         {
-            playerNameText.text = "Player: " + playerName;
+            uiDisplay.UpdatePlayerName(playerName);
         }
     }
 
     // Update the player health in the UI
     private void UpdatePlayerHealth(int playerHealth)
     {
-        if (playerHealthText != null)
+        if(uiDisplay != null)
         {
-            playerHealthText.text = "Health: " + playerHealth;
+            uiDisplay.UpdatePlayerHealth(playerHealth);
         }
     }
 
     // Update the score in the UI
     private void UpdateScore(int score)
     {
-        if (scoreText != null)
+        if(uiDisplay != null)
         {
-            scoreText.text = "Score: " + score;
+            uiDisplay.UpdateScore(score);
         }
     }
 }
