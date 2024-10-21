@@ -13,6 +13,6 @@ public class PlayerSpawner : MonoBehaviour
     private void SpawnPlayer()
     {
         // Call the SpawnPlayer method from the GameManager
-        GameManager.Instance.SpawnPlayer(spawnPosition);
+
     }
 }

@@ -61,8 +61,8 @@ public class Enemy : MonoBehaviour, IDamagable
         // Debug log to show that the enemy has died
         Debug.Log("Enemy has died");
         
-        //increase the players score 
-        GameManager.Instance.AddScore(10 * enemyData.health);
+        //increase the players score in the game manager
+        
     }
 
     public void ShowHitEffect()
