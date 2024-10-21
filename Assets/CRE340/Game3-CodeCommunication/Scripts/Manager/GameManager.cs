@@ -1,25 +1,26 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     // Singleton instance
-    private static GameManager _instance;
+    private static GameManager instance;
 
     public static GameManager Instance
     {
         get
         {
-            if (_instance == null)
+            if (instance == null)
             {
-                _instance = FindObjectOfType<GameManager>();
-                if (_instance == null)
+                instance = FindObjectOfType<GameManager>();
+                if (instance == null)
                 {
                     GameObject singletonObject = new GameObject();
-                    _instance = singletonObject.AddComponent<GameManager>();
+                    instance = singletonObject.AddComponent<GameManager>();
                     singletonObject.name = typeof(GameManager).ToString() + " (Singleton)";
                 }
             }
-            return _instance;
+            return instance;
         }
     }
 
@@ -27,21 +28,21 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     private Player playerInstance;
 
-    // Reference to the UI_Display
-    public UI_Display uiDisplay; // Set this in the Inspector
+    // Private backing fields for inspector visibility
+    [SerializeField] private string playerName = "Player1"; // Default player name
+    [SerializeField] private int playerHealth = 100;        // Default health
+    [SerializeField] private int score = 0;                 // Default score
 
-    // Private variables for game state
-    private int _score = 0;
+    // Public properties to access these fields but prevent external modification
+    public string PlayerName { get { return playerName; } private set { playerName = value; } }
+    public int PlayerHealth { get { return playerHealth; } private set { playerHealth = value; } }
+    public int Score { get { return score; } private set { score = value; } }
 
-    // Public property for score
-    public int Score
+    private void Start()
     {
-        get { return _score; }
-        set
-        {
-            _score = Mathf.Max(0, value); // Ensure score doesn't go below 0
-            uiDisplay.UpdateScore(_score); // Update the score UI via UI_Display
-        }
+        // Initialize with default values (optional)
+        Debug.Log("GameManager initialized with default player state.");
+        SetPlayerName(playerInstance.name);
     }
 
     // Method to instantiate the player and keep track of its instance
@@ -52,28 +53,36 @@ public class GameManager : MonoBehaviour
             GameObject playerObject = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
             playerInstance = playerObject.GetComponent<Player>();
         }
-
-        // Update the UI for the initial health
-        uiDisplay.UpdateHealth(playerInstance.health);
     }
-    
 
-    // Method to handle player taking damage
-    public void PlayerHealth(int health)
+    // Method to set the player name
+    public void SetPlayerName(string name)
     {
-        if (playerInstance != null)
+        PlayerName = name;
+    }
+
+    // Method to update player health
+    public void SetPlayerHealth(int health)
+    {
+        PlayerHealth = Mathf.Clamp(health, 0, 100); // Ensure health stays between 0 and 100
+        // Optionally, check for player death
+        if (PlayerHealth <= 0)
         {
-            uiDisplay.UpdateHealth(health); // Update the health UI after damage
+            // Handle player death, such as restarting level or showing game over
+            //RestartLevel();
+            Invoke("RestartLevel",5F);
         }
     }
 
-    private void Start()
+    // Method to increase the score
+    public void AddScore(int points)
     {
-        // Initialize the UI with the current game state
-        uiDisplay.UpdateScore(_score);
-        if (playerInstance != null)
-        {
-            uiDisplay.UpdateHealth(playerInstance.health);
-        }
+        Score += points;
+    }
+
+    // Method to restart the current level
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

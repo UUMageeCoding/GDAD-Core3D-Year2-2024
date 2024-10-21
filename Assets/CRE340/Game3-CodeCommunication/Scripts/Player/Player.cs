@@ -30,11 +30,11 @@ public class Player : MonoBehaviour, IDamagable
 
         // Trigger the OnObjectDamaged event (optional)
         HealthEventManager.OnObjectDamaged?.Invoke(gameObject.name, health);
+        
+        //update the player health UI
+        GameManager.Instance.SetPlayerHealth(health);
 
         ShowHitEffect();
-        
-        //TELL THE GAME MANAGER THAT THE PLAYER HAS TAKEN DAMAGE
-        GameManager.Instance.PlayerHealth(health);
 
         // Check if the player has died
         if (health <= 0)
