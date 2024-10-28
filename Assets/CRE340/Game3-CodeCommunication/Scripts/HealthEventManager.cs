@@ -4,6 +4,7 @@ using UnityEngine;
 public static class HealthEventManager
 {
     
+    
     // Define a delegate for damage taken and object destroyed events
     public delegate void HealthEvent(string name, int currentHealth);
 
@@ -12,5 +13,4 @@ public static class HealthEventManager
 
     // Multi-delegate: Called when any object implementing IDamagable is destroyed
     public static HealthEvent OnObjectDestroyed;
-    
 }
