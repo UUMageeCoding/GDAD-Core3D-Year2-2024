@@ -5,4 +5,3 @@ public abstract class InventoryItem : ScriptableObject {
     public Sprite icon;
     public ItemType itemType;
 }
-

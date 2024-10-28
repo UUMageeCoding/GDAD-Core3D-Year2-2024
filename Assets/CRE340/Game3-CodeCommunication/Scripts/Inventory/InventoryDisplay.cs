@@ -4,9 +4,11 @@ using UnityEngine.UI;
 using TMPro;
 
 public class InventoryDisplay : MonoBehaviour {
-    
-    public GameObject slotPrefab; // Prefab for individual inventory slots
-    public Transform slotParent;  // Parent object for slots in the UI panel
+    public GameObject slotPrefab;     // Slot prefab to represent each inventory item
+    public Transform slotParent;      // Parent transform for positioning slots
+    public float xSpacing = 128f;     // Horizontal spacing between slots
+    public float ySpacing = 128f;     // Vertical spacing between slots
+
     private List<GameObject> slots = new List<GameObject>();
 
     private void OnEnable() {
@@ -24,19 +26,25 @@ public class InventoryDisplay : MonoBehaviour {
         }
         slots.Clear();
 
-        // Create a new slot for each item
-        foreach (InventoryItem item in items) {
+        // Create a new slot for each item in the inventory, arranged in a 2x4 grid
+        for (int i = 0; i < items.Count; i++) {
+            InventoryItem item = items[i];
             GameObject newSlot = Instantiate(slotPrefab, slotParent);
+
+            // Calculate grid position
+            int row = i / 2;     // 2 items per row
+            int column = i % 2;  // 0 for first item in row, 1 for second item
+
+            // Position slot based on calculated grid position
+            newSlot.transform.localPosition = new Vector3(column * xSpacing, -row * ySpacing, 0);
             slots.Add(newSlot);
 
             // Update the slot with item data
             Image icon = newSlot.transform.Find("Icon").GetComponent<Image>();
             TextMeshProUGUI nameText = newSlot.transform.Find("NameText").GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI quantityText = newSlot.transform.Find("QuantityText").GetComponent<TextMeshProUGUI>();
 
             icon.sprite = item.icon;
             nameText.text = item.itemName;
-            quantityText.text = items.FindAll(i => i == item).Count.ToString(); // Show stack count if needed
         }
     }
 }

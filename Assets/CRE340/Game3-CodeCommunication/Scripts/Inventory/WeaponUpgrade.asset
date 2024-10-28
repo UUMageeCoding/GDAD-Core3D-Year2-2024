@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: WeaponUpgrade
   m_EditorClassIdentifier: 
   itemName: Weapon Upgrade
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 60214f58f0830164f9fdb387e43412ee, type: 3}
   itemType: 1
-  maxStack: 2
   damage: 5
   ammoCount: 50
