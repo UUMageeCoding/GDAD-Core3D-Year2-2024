@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc49bcca90e7fe459ca933dfac9fad0, type: 3}
   m_Name: WeaponUpgrade
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Weapon Upgrade
   icon: {fileID: 0}
-  itemType: 0
-  maxStack: 0
-  damage: 0
-  range: 0
-  ammoCount: 0
+  itemType: 1
+  maxStack: 2
+  damage: 5
+  ammoCount: 50

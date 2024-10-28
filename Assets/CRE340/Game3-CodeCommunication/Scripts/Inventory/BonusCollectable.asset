@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0847a6f90f394514cb532fbfddfeaffe, type: 3}
   m_Name: BonusCollectable
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Bonus
   icon: {fileID: 0}
-  itemType: 0
-  maxStack: 0
-  bonusPoints: 0
-  duration: 0
+  itemType: 2
+  maxStack: 10
+  bonusPoints: 500

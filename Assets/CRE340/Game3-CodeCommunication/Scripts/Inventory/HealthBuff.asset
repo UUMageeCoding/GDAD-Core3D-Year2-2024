@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ca84cbe02fba8418366dc52213451f, type: 3}
   m_Name: HealthBuff
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Health Buff
   icon: {fileID: 0}
   itemType: 0
-  maxStack: 0
-  healingAmount: 0
+  maxStack: 5
+  healingAmount: 20
