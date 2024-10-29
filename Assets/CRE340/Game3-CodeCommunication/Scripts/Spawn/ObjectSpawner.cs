@@ -13,6 +13,11 @@ public class ObjectSpawner : MonoBehaviour
 
     // List to store references to all spawned objects
     public List<GameObject> spawnedObjects = new List<GameObject>();
+    
+    //event to notify when the object is spawned
+    public delegate void Spawn(GameObject spawnedGameObject);
+    public static event Spawn OnSpawn;
+    
 
     void Start()
     {
