@@ -15,9 +15,7 @@ public class ObjectSpawner : MonoBehaviour
     public List<GameObject> spawnedObjects = new List<GameObject>();
     
     //event to notify when the object is spawned
-    public delegate void Spawn(GameObject spawnedGameObject);
-    public static event Spawn OnSpawn;
-    
+    public static event Action<GameObject, float> OnObjectSpawned;
 
     void Start()
     {
