@@ -24,6 +24,9 @@ public class UI_Display : MonoBehaviour
         if (playerHealthText != null)
         {
             playerHealthText.text = "Health: " + playerHealth;
+            
+            //TODO - add a health animation effect
+            
         }
     }
 
@@ -33,6 +36,11 @@ public class UI_Display : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = "Score: " + score;
+            
+            //TODO - add a score animation effect
+            
+            //TODO - add a score sound effect
+            AudioEventManager.PlaySFX(null, "UI Beep",  1.0f, 1.0f, true, 0.1f, 0f);
         }
     }
 }

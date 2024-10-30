@@ -52,7 +52,7 @@ public class AudioTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //example with explicit parameters passed
-            //AudioEventManager.OnPlaySFX(this.transform, "SFX Name Here", 1.0f, 1.0f, true, 0.8f, 1.2f, 0f);
+            AudioEventManager.PlaySFX(this.transform, "SFX Name Here", 1.0f, 1.0f, true, 0.1f, 0f);
             
             //example with parameters from the inspector
             AudioEventManager.PlaySFX(this.transform, sfxName, sfxVolume, pitch, randomisePitch, pitchRange, spatialBlend);

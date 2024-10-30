@@ -30,6 +30,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastShootTime + shootCooldown)
         {
             Fire();
+            FireEffects();
         }
     }
 
@@ -50,5 +51,12 @@ public class Shoot : MonoBehaviour
 
         // Update the last shoot time to enforce cooldown
         lastShootTime = Time.time;
+    }
+
+    private void FireEffects(){
+        //TODO - add a muzzle flash effect when shooting??
+        
+        //TODO - add a camera shake effect when shooting
+        FeedbackEventManager.ShakeCamera(5f, 1f, 0.25f);
     }
 }

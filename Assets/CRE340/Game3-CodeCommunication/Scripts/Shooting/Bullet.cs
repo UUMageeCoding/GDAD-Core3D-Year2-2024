@@ -28,6 +28,9 @@ public class Bullet : MonoBehaviour
             IDamagable damageable = collision.gameObject.GetComponent<IDamagable>();
             damageable.TakeDamage(damage);
             damageable.ShowHitEffect();
+            
+            //TODO - add an audio feedback when hitting an object
+            AudioEventManager.PlaySFX(this.transform, "Slap Heavy",  1.0f, 1.0f, true, 0.1f, 0f);
         }
 
     }

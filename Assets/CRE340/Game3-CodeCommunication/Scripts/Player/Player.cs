@@ -22,6 +22,12 @@ public class Player : MonoBehaviour, IDamagable
         mat = GetComponent<Renderer>().material;
         originalColor = mat.color;
     }
+    
+    private void OnEnable()
+    {
+        // TODO - add an animation event to play the spawn animation tween
+        
+    }
 
     public void TakeDamage(int damage)
     {
@@ -33,6 +39,9 @@ public class Player : MonoBehaviour, IDamagable
         
         //update the player health UI
         GameManager.Instance.SetPlayerHealth(health);
+        
+        //TODO - add a camera shake effect when the player is hit
+        FeedbackEventManager.ShakeCamera(10f,3f,1f );
 
         ShowHitEffect();
 
@@ -55,6 +64,10 @@ public class Player : MonoBehaviour, IDamagable
             Instantiate(dieEffectPrefab, transform.position, Quaternion.identity);
         }
 
+        //TODO - add and audio feedback when the player dies
+        AudioEventManager.PlaySFX(null, "Impact Generic",  1.0f, 1.0f, true, 0.1f, 0f);
+        
+        
         // Optional: Add any additional death logic (e.g., respawn, game over)
        
         //Destroy(gameObject);
@@ -72,6 +85,9 @@ public class Player : MonoBehaviour, IDamagable
         // Flash the player material red on hit
         mat.color = Color.red;
         Invoke("ResetMaterial", 0.1f);
+        
+        //TODO - add an audio feedback when the player is hit
+        AudioEventManager.PlaySFX(this.transform, "Debuff",  1.0f, 1.0f, true, 0.1f, 0f);
     }
 
     private void ResetMaterial()

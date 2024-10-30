@@ -43,7 +43,7 @@ public class AudioEventSender_BGM : MonoBehaviour
     public float eventDelay = 0f;
     
     [Space(20)]
-    [Header("TestMode: 'M' to play music, 'N' to stop, 'B' to pause")]
+    [Header("TestMode : 'M' to play music, 'N' to stop, 'B' to pause")]
     public bool testMode = false;
 
     private void OnEnable(){

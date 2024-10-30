@@ -27,6 +27,12 @@ public class Enemy : MonoBehaviour, IDamagable
         mat = GetComponent<Renderer>().material;
         originalColor = mat.color;
     }
+    
+    private void OnEnable()
+    {
+        // TODO - add an animation event to play the spawn animation tween
+        
+    }
 
     // Method to handle taking damage (from player or other sources)
     public void TakeDamage(int damage)
@@ -54,6 +60,9 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             Instantiate(dieEffectPrefab, transform.position, Quaternion.identity);
         }
+        
+        //TODO - add and audio feedback when the enemy dies
+        AudioEventManager.PlaySFX(null, "Explosion Flesh",  1.0f, 1.0f, true, 0.1f, 0f);
 
         // Optional: add death logic, like spawning loot or playing an animation
         Destroy(gameObject);
@@ -71,6 +80,9 @@ public class Enemy : MonoBehaviour, IDamagable
         Material mat = GetComponent<Renderer>().material;
         mat.color = Color.red;
         Invoke("ResetMaterial", 0.1f);
+        
+        //TODO - add an audio feedback when the enemy is hit
+        AudioEventManager.PlaySFX(this.transform, "Flesh Hit",  1.0f, 1.0f, true, 0.1f, 0f);
     }
 
     private void ResetMaterial()
