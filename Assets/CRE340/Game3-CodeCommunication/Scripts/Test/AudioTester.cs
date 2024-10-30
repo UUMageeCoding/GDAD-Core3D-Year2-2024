@@ -12,6 +12,9 @@ public class AudioTester : MonoBehaviour
     public string musicTrackName = "name";
     [Range(0,1f)]
     public float bgmVolume = 1.0f;
+    public FadeType fadeType = FadeType.Crossfade;
+    [Range(0,5f)]
+    public float fadeDuration = 1.5f;
     public bool loopBGM = true;
     
     [Space(20)]
@@ -45,7 +48,7 @@ public class AudioTester : MonoBehaviour
             //AudioEventManager.OnPlayMusic(0, "Music Name Here", 1.0f, true);
             
             //example with parameters from the inspector
-            AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, bgmVolume, loopBGM);
+            AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, bgmVolume, fadeType, fadeDuration, loopBGM);
         }
         
         //play sound effect when the space bar is pressed

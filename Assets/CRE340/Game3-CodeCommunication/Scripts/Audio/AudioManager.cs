@@ -10,9 +10,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("Background Music Settings")]
     public GameObject musicPrefab;
-    public float musicFadeDuration = 1.5f;
-    public float musicCrossfadeDuration = 1.5f;
-    public bool useCrossfade = true;
+    private float musicFadeDuration = 1.5f;
+    //public float musicCrossfadeDuration = 1.5f;
+    private FadeType musicFadeType = FadeType.Crossfade;
+    private bool isFading = false; // Flag to prevent multiple fades at once
 
     private Dictionary<int, AudioClip> musicTracks = new Dictionary<int, AudioClip>();
     private AudioSource currentMusicSource;
@@ -71,8 +72,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(int trackNumber, string trackName, float volume = 1.0f, bool loop = true)
+    // Event Method - Play background music by track number or name with optional volume and loop settings - calls appropriate overload based on parameters
+    public void PlayMusic(int trackNumber, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loop = true)
     {
+        if (isFading) return; // Block if a fade/crossfade is already in progress
+
+        musicFadeType = fadeType;
+        musicFadeDuration = fadeDuration;
+        
         if (string.IsNullOrEmpty(trackName) && trackNumber >= 0)
         {
             PlayMusic(trackNumber, volume, loop);
@@ -82,11 +89,14 @@ public class AudioManager : MonoBehaviour
             PlayMusic(trackName, volume, loop);
         }
     }
-
+    // Overload - Play background music by track number with optional volume and loop settings
     public void PlayMusic(int trackNumber, float volume = 1.0f, bool loop = true)
     {
+        if (isFading) return; // Block if a fade/crossfade is already in progress
+
         if (!musicTracks.TryGetValue(trackNumber, out AudioClip newTrack)) return;
-        if (useCrossfade)
+        isFading = true;
+        if (musicFadeType == FadeType.Crossfade)
         {
             StartCoroutine(CrossfadeMusic(newTrack, volume, loop));
         }
@@ -98,11 +108,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string trackName, float volume = 1.0f, bool loop = true)
     {
+        if (isFading) return; // Block if a fade/crossfade is already in progress
+
         foreach (var track in musicTracks)
         {
             if (track.Value.name == trackName)
             {
-                if (useCrossfade)
+                isFading = true;
+                if (musicFadeType == FadeType.Crossfade)
                 {
                     StartCoroutine(CrossfadeMusic(track.Value, volume, loop));
                 }
@@ -118,7 +131,7 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator CrossfadeMusic(AudioClip newTrack, float targetVolume, bool loop)
     {
-        float crossfadeDuration = musicCrossfadeDuration;
+        float crossfadeDuration = musicFadeDuration;
 
         GameObject musicObject = Instantiate(musicPrefab, transform);
         nextMusicSource = musicObject.GetComponent<AudioSource>();
@@ -141,6 +154,7 @@ public class AudioManager : MonoBehaviour
 
         nextMusicSource.volume = targetVolume;
         currentMusicSource = nextMusicSource;
+        isFading = false; // Reset flag after crossfade completes
     }
 
     private IEnumerator FadeOutAndInMusic(AudioClip newTrack, float targetVolume, bool loop)
@@ -172,6 +186,7 @@ public class AudioManager : MonoBehaviour
 
         nextMusicSource.volume = targetVolume;
         currentMusicSource = nextMusicSource;
+        isFading = false; // Reset flag after fade completes
     }
 
     public void PlaySoundEffect(Transform attachTo, string soundName, float volume, float pitch, bool randomizePitch, float pitchRange, float spatialBlend)

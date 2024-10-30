@@ -122,12 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!82 &7161420 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8359367033671341306, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1656497303767346561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &24890972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52,
@@ -4052,8 +4046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1656c91dd4c38034db3f2581b5d861ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 7161420}
-  musicFadeDuration: 1.5
+  musicPrefab: {fileID: 8822123416660145754, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
+    type: 3}
   soundEffectPrefab: {fileID: 7698994631750102530, guid: fe18fd3b82aee3244a8132f55ee67eb0,
     type: 3}
   musicTrackNames: []
@@ -4444,6 +4438,8 @@ MonoBehaviour:
   musicTrackNumber: -1
   musicTrackName: Synthpop Martini Main
   bgmVolume: 1
+  fadeType: 0
+  fadeDuration: 1.5
   loopBGM: 1
   sfxName: Sci Fi Shotgun 8
   sfxVolume: 1
@@ -6227,74 +6223,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 3}
---- !u!1001 &1656497303767346561
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58932919111104339, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8822123416660145754, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
-        type: 3}
-      propertyPath: m_Name
-      value: Music Source
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3cdffaf4f6279474bb77ea141cfc8c4e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6310,5 +6238,4 @@ SceneRoots:
   - {fileID: 189863286}
   - {fileID: 2095147851}
   - {fileID: 1382946486}
-  - {fileID: 1656497303767346561}
   - {fileID: 1533272602}
