@@ -16,8 +16,6 @@ public class AudioManager : MonoBehaviour
     [Header("Sound Effects Settings")]
     public GameObject soundEffectPrefab;  // Prefab with AudioSource component
     private Dictionary<string, AudioClip> soundEffects = new Dictionary<string, AudioClip>();
-    public float randomPitchMin = 0.9f;
-    public float randomPitchMax = 1.1f;
 
     [Header("Available Music Tracks")]
     [SerializeField] private List<string> musicTrackNames = new List<string>();  // List of music track names for inspector display
@@ -43,12 +41,12 @@ public class AudioManager : MonoBehaviour
 
     //enable and disable fucntions for audioeventmanager
     private void OnEnable(){
-        //AudioEventManager.OnPlayMusic += PlayMusic;
-        AudioEventManager.OnPlaySFX += PlaySoundEffect;
+        AudioEventManager.PlayBGM += PlayMusic;
+        AudioEventManager.PlaySFX += PlaySoundEffect;
     }
     private void OnDisable(){
-        //AudioEventManager.OnPlayMusic -= PlayMusic;
-        AudioEventManager.OnPlaySFX -= PlaySoundEffect;
+        AudioEventManager.PlayBGM -= PlayMusic;
+        AudioEventManager.PlaySFX -= PlaySoundEffect;
     }
 
 
@@ -62,6 +60,7 @@ public class AudioManager : MonoBehaviour
         for (int i = 0; i < bgmClips.Length; i++)
         {
             musicTracks[i] = bgmClips[i];
+            musicTrackNames.Add(bgmClips[i].name);
         }
 
         // Load sound effects and populate names list
@@ -87,43 +86,45 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Plays background music based on track number with a fade effect.
+    /// Plays background music based on track number or name with a fade effect, volume, and looping.
     /// </summary>
-    public void PlayMusic(int trackNumber, string trackName, float volume, bool loop)
+    public void PlayMusic(int trackNumber, string trackName, float volume = 1.0f, bool loop = true)
     {
-        if (trackName == null && trackNumber >= 0){
+        if (string.IsNullOrEmpty(trackName) && trackNumber >= 0)
+        {
             PlayMusic(trackNumber, volume, loop);
         }
-        if (trackName != null){
+        else if (!string.IsNullOrEmpty(trackName))
+        {
             PlayMusic(trackName, volume, loop);
         }
     }
-        
-    //play BGM based on track number
-    public void PlayMusic(int trackNumber, float volume, bool loop = true)
+
+    // Play BGM based on track number
+    public void PlayMusic(int trackNumber, float volume = 1.0f, bool loop = true)
     {
         if (!musicTracks.TryGetValue(trackNumber, out AudioClip newTrack)) return;
-        StartCoroutine(FadeMusic(newTrack));
+        StartCoroutine(FadeMusic(newTrack, volume, loop));
     }
-    
-    //play BGM based on track name
-    public void PlayMusic(string trackName, float volume, bool loop = true)
+
+    // Play BGM based on track name
+    public void PlayMusic(string trackName, float volume = 1.0f, bool loop = true)
     {
         foreach (var track in musicTracks)
         {
             if (track.Value.name == trackName)
             {
-                StartCoroutine(FadeMusic(track.Value));
+                StartCoroutine(FadeMusic(track.Value, volume, loop));
                 return;
             }
         }
         Debug.LogWarning($"Music track '{trackName}' not found in Resources/Audio/BGM!");
     }
 
-    
-    
-
-    private IEnumerator FadeMusic(AudioClip newTrack)
+    /// <summary>
+    /// Fades the current music track out and plays the new track with specified volume and looping.
+    /// </summary>
+    private IEnumerator FadeMusic(AudioClip newTrack, float targetVolume, bool loop)
     {
         if (musicSource.isPlaying)
         {
@@ -137,15 +138,19 @@ public class AudioManager : MonoBehaviour
             musicSource.Stop();
         }
 
-        // Play and fade in the new track
+        // Set the new track and properties
         musicSource.clip = newTrack;
+        musicSource.volume = 0;  // Start from zero for fade-in effect
+        musicSource.loop = loop; // Set looping
         musicSource.Play();
 
+        // Fade in to target volume
         for (float t = 0; t < musicFadeDuration; t += Time.deltaTime)
         {
-            musicSource.volume = Mathf.Lerp(0, 1, t / musicFadeDuration);
+            musicSource.volume = Mathf.Lerp(0, targetVolume, t / musicFadeDuration);
             yield return null;
         }
+        musicSource.volume = targetVolume;  // Ensure final volume is set precisely
     }
 
     /// <summary>

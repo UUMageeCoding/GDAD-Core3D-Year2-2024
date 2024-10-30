@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AudioTester : MonoBehaviour
 {
-    public int musicTrackNumber = 0;
+    [Space(20)]
+    [Header("Background Music Event Parameters")]
+    [Space(5)]
+    public int musicTrackNumber = -1; 
+    public string musicTrackName = "name";
+    [Range(0,1f)]
+    public float bgmVolume = 1.0f;
+    public bool loopBGM = true;
     
     [Space(20)]
     [Header("Sound FX Event Parameters")]
     [Space(5)]
     // parameters to pass with the SFX event
     public string sfxName = "name";
-    [Range(0,1f)]
-    public float volume = 1.0f;
+    [FormerlySerializedAs("volume")] [Range(0,1f)]
+    public float sfxVolume = 1.0f;
     [Range(0,2f)]
     public float pitch = 1.0f;
     public bool randomisePitch = true;
@@ -33,7 +41,11 @@ public class AudioTester : MonoBehaviour
         //playe background music  when a number key is pressed
         if (Input.GetKeyDown(KeyCode.M))
         {
-            //AudioManager.Instance.PlayMusic(musicTrackNumber);
+            //example with explicit parameters passed
+            //AudioEventManager.OnPlayMusic(0, "Music Name Here", 1.0f, true);
+            
+            //example with parameters from the inspector
+            AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, bgmVolume, loopBGM);
         }
         
         //play sound effect when the space bar is pressed
@@ -43,7 +55,7 @@ public class AudioTester : MonoBehaviour
             //AudioEventManager.OnPlaySFX(this.transform, "SFX Name Here", 1.0f, 1.0f, true, 0.8f, 1.2f, 0f);
             
             //example with parameters from the inspector
-            AudioEventManager.OnPlaySFX(this.transform, sfxName, volume, pitch, randomisePitch, pitchRange, spatialBlend);
+            AudioEventManager.PlaySFX(this.transform, sfxName, sfxVolume, pitch, randomisePitch, pitchRange, spatialBlend);
         }
     }
 }
