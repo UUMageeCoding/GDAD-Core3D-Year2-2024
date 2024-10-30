@@ -11,10 +11,10 @@ public class ChromaticAberrationEffect : MonoBehaviour
     private Coroutine aberrationCoroutine;
 
     private void OnEnable(){
-        FeedbackEventManager.ChromaticAberration += LerpAberrationEffect;
+        FeedbackEventManager.ChromaticAberrationLerp += LerpAberrationEffect;
     }
     private void OnDisable(){
-        FeedbackEventManager.ChromaticAberration -= LerpAberrationEffect;
+        FeedbackEventManager.ChromaticAberrationLerp -= LerpAberrationEffect;
     }
 
     private void Awake()
