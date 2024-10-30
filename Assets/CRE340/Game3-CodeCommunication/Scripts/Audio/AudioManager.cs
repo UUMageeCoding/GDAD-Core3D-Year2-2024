@@ -9,8 +9,11 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     [Header("Background Music Settings")]
-    public GameObject musicPrefab;  // Prefab with an AudioSource component for music
+    public GameObject musicPrefab;
     public float musicFadeDuration = 1.5f;
+    public float musicCrossfadeDuration = 1.5f;
+    public bool useCrossfade = true;
+
     private Dictionary<int, AudioClip> musicTracks = new Dictionary<int, AudioClip>();
     private AudioSource currentMusicSource;
     private AudioSource nextMusicSource;
@@ -83,7 +86,14 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(int trackNumber, float volume = 1.0f, bool loop = true)
     {
         if (!musicTracks.TryGetValue(trackNumber, out AudioClip newTrack)) return;
-        StartCoroutine(FadeMusic(newTrack, volume, loop));
+        if (useCrossfade)
+        {
+            StartCoroutine(CrossfadeMusic(newTrack, volume, loop));
+        }
+        else
+        {
+            StartCoroutine(FadeOutAndInMusic(newTrack, volume, loop));
+        }
     }
 
     public void PlayMusic(string trackName, float volume = 1.0f, bool loop = true)
@@ -92,14 +102,48 @@ public class AudioManager : MonoBehaviour
         {
             if (track.Value.name == trackName)
             {
-                StartCoroutine(FadeMusic(track.Value, volume, loop));
+                if (useCrossfade)
+                {
+                    StartCoroutine(CrossfadeMusic(track.Value, volume, loop));
+                }
+                else
+                {
+                    StartCoroutine(FadeOutAndInMusic(track.Value, volume, loop));
+                }
                 return;
             }
         }
         Debug.LogWarning($"Music track '{trackName}' not found in Resources/Audio/BGM!");
     }
 
-    private IEnumerator FadeMusic(AudioClip newTrack, float targetVolume, bool loop)
+    private IEnumerator CrossfadeMusic(AudioClip newTrack, float targetVolume, bool loop)
+    {
+        float crossfadeDuration = musicCrossfadeDuration;
+
+        GameObject musicObject = Instantiate(musicPrefab, transform);
+        nextMusicSource = musicObject.GetComponent<AudioSource>();
+        nextMusicSource.clip = newTrack;
+        nextMusicSource.volume = 0;  // Start volume at 0 for crossfade
+        nextMusicSource.loop = loop;
+        nextMusicSource.Play();
+
+        if (currentMusicSource != null && currentMusicSource.isPlaying)
+        {
+            float startVolume = currentMusicSource.volume;
+            for (float t = 0; t < crossfadeDuration; t += Time.deltaTime)
+            {
+                currentMusicSource.volume = Mathf.Lerp(startVolume, 0, t / crossfadeDuration);
+                nextMusicSource.volume = Mathf.Lerp(0, targetVolume, t / crossfadeDuration);
+                yield return null;
+            }
+            Destroy(currentMusicSource.gameObject); // Clean up old AudioSource after crossfade
+        }
+
+        nextMusicSource.volume = targetVolume;
+        currentMusicSource = nextMusicSource;
+    }
+
+    private IEnumerator FadeOutAndInMusic(AudioClip newTrack, float targetVolume, bool loop)
     {
         if (currentMusicSource != null && currentMusicSource.isPlaying)
         {
@@ -109,7 +153,8 @@ public class AudioManager : MonoBehaviour
                 currentMusicSource.volume = Mathf.Lerp(startVolume, 0, t / musicFadeDuration);
                 yield return null;
             }
-            Destroy(currentMusicSource.gameObject);
+            currentMusicSource.Stop();
+            Destroy(currentMusicSource.gameObject); // Clean up old AudioSource after fade out
         }
 
         GameObject musicObject = Instantiate(musicPrefab, transform);
