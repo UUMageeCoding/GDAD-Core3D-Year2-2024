@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 public class AudioTester : MonoBehaviour
 {
+    [Header("Press 'M' to play background music")]
     [Space(20)]
     [Header("Background Music Event Parameters (BGM)")]
     [Space(5)]
@@ -17,12 +18,13 @@ public class AudioTester : MonoBehaviour
     public float fadeDuration = 1.5f;
     public bool loopBGM = true;
     
+    [Header("Press 'Space' to play sound effect")]
     [Space(20)]
     [Header("Sound FX Event Parameters (SFX)")]
     [Space(5)]
     // parameters to pass with the SFX event
     public string sfxName = "name";
-    [FormerlySerializedAs("volume")] [Range(0,1f)]
+    [Range(0,1f)]
     public float sfxVolume = 1.0f;
     [Range(0,2f)]
     public float pitch = 1.0f;
@@ -32,11 +34,6 @@ public class AudioTester : MonoBehaviour
     [Range(0,1f)]
     public float spatialBlend = 0.0f;
     
-    
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

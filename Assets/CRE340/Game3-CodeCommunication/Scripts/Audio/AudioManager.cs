@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     [Header("Background Music Settings")]
     public GameObject musicPrefab;
     private float musicFadeDuration = 1.5f;
-    //public float musicCrossfadeDuration = 1.5f;
     private FadeType musicFadeType = FadeType.Crossfade;
     private bool isFading = false; // Flag to prevent multiple fades at once
 

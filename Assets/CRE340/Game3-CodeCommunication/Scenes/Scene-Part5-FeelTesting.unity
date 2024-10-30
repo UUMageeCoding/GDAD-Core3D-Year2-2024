@@ -4027,6 +4027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382946486}
   - component: {fileID: 1382946485}
+  - component: {fileID: 1382946487}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -4067,6 +4068,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1382946487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382946483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fdc11fe5b8416a4c83edb15b64fd82c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicTrackNumber: 0
+  musicTrackName: Synthpop Martini Main
+  playOnAwake: 1
+  loopBGM: 1
+  bgmVolume: 0.6
+  fadeType: 0
+  fadeDuration: 1.5
+  playDelay: 2
 --- !u!1 &1383904467
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,6 +4410,7 @@ GameObject:
   - component: {fileID: 1533272602}
   - component: {fileID: 1533272601}
   - component: {fileID: 1533272603}
+  - component: {fileID: 1533272604}
   m_Layer: 0
   m_Name: TestingScripts
   m_TagString: Untagged
@@ -4447,6 +4469,24 @@ MonoBehaviour:
   randomisePitch: 1
   pitchRange: 0.1
   spatialBlend: 0
+--- !u!114 &1533272604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533272600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b675a75333cdca84b8f0b419d0080d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxName: SFM NAME HERE
+  sfxVolume: 1
+  pitch: 1
+  randomisePitch: 1
+  pitchRange: 0.1
+  spatialBlend: 0.5
 --- !u!1001 &1559950729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6223,6 +6263,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 3}
+--- !u!1001 &6929681344068584460
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074202321256414594, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041641523765857172, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041641523765857172, guid: 1a91820ca61272a4290fe169ebaa966b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a91820ca61272a4290fe169ebaa966b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6239,3 +6352,4 @@ SceneRoots:
   - {fileID: 2095147851}
   - {fileID: 1382946486}
   - {fileID: 1533272602}
+  - {fileID: 6929681344068584460}

@@ -52,6 +52,7 @@ public class ObjectSpawner : MonoBehaviour
 
         // Instantiate the prefab at the random position
         GameObject spawnedObject = Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
+        
 
         // Add the newly spawned object to the list
         spawnedObjects.Add(spawnedObject);
