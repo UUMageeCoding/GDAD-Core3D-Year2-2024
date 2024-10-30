@@ -6,7 +6,7 @@ public class Shoot : MonoBehaviour
     public GameObject bulletPrefab; // Reference to the bullet prefab
     public Transform bulletSpawnPoint; // Reference to the bullet spawn point
 
-    public float bulletSpeed = 10f; // Speed of the bullet
+    public float bulletSpeed = 20f; // Speed of the bullet
     public float shootCooldown = 0.1f; // Cooldown in seconds between shots
 
     private float lastShootTime = -100f; // Initialize to a low value
