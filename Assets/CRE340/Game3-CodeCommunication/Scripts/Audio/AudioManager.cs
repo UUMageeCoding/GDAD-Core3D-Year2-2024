@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
@@ -17,6 +19,11 @@ public class AudioManager : MonoBehaviour
     public float randomPitchMin = 0.9f;
     public float randomPitchMax = 1.1f;
 
+    [Header("Available Music Tracks")]
+    [SerializeField] private List<string> musicTrackNames = new List<string>();  // List of music track names for inspector display
+    
+    [Header("Available Ambient Sounds")]
+    
     [Header("Available Sound Effects")]
     [SerializeField] private List<string> soundEffectNames = new List<string>();  // List of SFX names for inspector display
 
@@ -33,6 +40,17 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //enable and disable fucntions for audioeventmanager
+    private void OnEnable(){
+        //AudioEventManager.OnPlayMusic += PlayMusic;
+        AudioEventManager.OnPlaySFX += PlaySoundEffect;
+    }
+    private void OnDisable(){
+        //AudioEventManager.OnPlayMusic -= PlayMusic;
+        AudioEventManager.OnPlaySFX -= PlaySoundEffect;
+    }
+
 
     /// <summary>
     /// Loads audio resources from Resources/Audio/BGM for music and Resources/Audio/SFX for sound effects.
@@ -51,8 +69,9 @@ public class AudioManager : MonoBehaviour
         foreach (var clip in sfxClips)
         {
             soundEffects[clip.name] = clip;
-            soundEffectNames.Add(clip.name);  // Add the name to the list
+            soundEffectNames.Add(clip.name);
         }
+
     }
 
     /// <summary>
@@ -70,12 +89,39 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays background music based on track number with a fade effect.
     /// </summary>
-    public void PlayMusic(int trackNumber)
+    public void PlayMusic(int trackNumber, string trackName, float volume, bool loop)
+    {
+        if (trackName == null && trackNumber >= 0){
+            PlayMusic(trackNumber, volume, loop);
+        }
+        if (trackName != null){
+            PlayMusic(trackName, volume, loop);
+        }
+    }
+        
+    //play BGM based on track number
+    public void PlayMusic(int trackNumber, float volume, bool loop = true)
     {
         if (!musicTracks.TryGetValue(trackNumber, out AudioClip newTrack)) return;
-
         StartCoroutine(FadeMusic(newTrack));
     }
+    
+    //play BGM based on track name
+    public void PlayMusic(string trackName, float volume, bool loop = true)
+    {
+        foreach (var track in musicTracks)
+        {
+            if (track.Value.name == trackName)
+            {
+                StartCoroutine(FadeMusic(track.Value));
+                return;
+            }
+        }
+        Debug.LogWarning($"Music track '{trackName}' not found in Resources/Audio/BGM!");
+    }
+
+    
+    
 
     private IEnumerator FadeMusic(AudioClip newTrack)
     {
@@ -105,7 +151,7 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays a sound effect attached to a specific transform.
     /// </summary>
-    public void PlaySoundEffect(Transform attachTo, string soundName, float volume = 1.0f, float pitch = 1.0f, bool randomizePitch = false)
+    public void PlaySoundEffect(Transform attachTo, string soundName, float volume, float pitch, bool randomizePitch, float pitchRange, float spatialBlend)
     {
         if (!soundEffects.TryGetValue(soundName, out AudioClip clip))
         {
@@ -115,10 +161,12 @@ public class AudioManager : MonoBehaviour
 
         GameObject sfxObject = Instantiate(soundEffectPrefab, attachTo.position, Quaternion.identity, attachTo);
         AudioSource sfxSource = sfxObject.GetComponent<AudioSource>();
-
+        
+        
         sfxSource.clip = clip;
         sfxSource.volume = volume;
-        sfxSource.pitch = randomizePitch ? Random.Range(randomPitchMin, randomPitchMax) * pitch : pitch;
+        sfxSource.pitch = randomizePitch ? Random.Range(pitch-pitchRange, pitch+pitchRange) * pitch : pitch;
+        sfxSource.spatialBlend = spatialBlend;
         sfxSource.Play();
 
         Destroy(sfxObject, clip.length / sfxSource.pitch);  // Destroy after playback completes
