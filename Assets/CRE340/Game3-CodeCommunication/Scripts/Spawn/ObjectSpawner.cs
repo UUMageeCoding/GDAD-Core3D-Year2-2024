@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
@@ -7,6 +8,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     public GameObject[] objectPrefabs;  // Array of prefabs to spawn
     public Vector3 spawnArea;           // x, y, z (width, height, depth) of the spawn area
+    public float startDelay = 1f;       // Delay before the first spawn
     public float minSpawnInterval = 2f; // Minimum spawn interval (2 seconds)
     public float maxSpawnInterval = 5f; // Maximum spawn interval (5 seconds)
     public int maxSpawnedObjects = 10;  // Maximum number of spawned objects
@@ -17,10 +19,8 @@ public class ObjectSpawner : MonoBehaviour
     //event to notify when the object is spawned
     public static event Action<GameObject, float> OnObjectSpawned;
 
-    void Start()
-    {
-        // Start invoking the SpawnObject method at a random interval
-        InvokeRepeating("SpawnRandomObject", Random.Range(minSpawnInterval, maxSpawnInterval), Random.Range(minSpawnInterval, maxSpawnInterval));
+    void Start(){
+        StartCoroutine(Spawner());
     }
 
     private void Update()
@@ -30,6 +30,12 @@ public class ObjectSpawner : MonoBehaviour
         {
             ShowSpawnedObjectsCount();
         }
+    }
+
+    private IEnumerator Spawner(){
+        yield return new WaitForSeconds(startDelay);
+        // Start invoking the SpawnObject method at a random interval
+        InvokeRepeating("SpawnRandomObject", Random.Range(minSpawnInterval, maxSpawnInterval), Random.Range(minSpawnInterval, maxSpawnInterval));
     }
 
     void SpawnRandomObject()

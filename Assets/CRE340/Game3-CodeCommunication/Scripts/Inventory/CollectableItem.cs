@@ -1,10 +1,20 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class CollectableItem : MonoBehaviour 
 {
     public InventoryItem itemData; // Reference to the ScriptableObject
 
     private InventoryManager inventoryManager; // Reference to the InventoryManager - we will use this to add the item to the inventory
+    
+    private void OnEnable()
+    {
+        // TODO - add an animation event to play the spawn animation tween
+        //scale the item up from 0 to 1 in 1 second using DOTween
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);
+        
+    }
     
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) { // Ensure the player is the one collecting

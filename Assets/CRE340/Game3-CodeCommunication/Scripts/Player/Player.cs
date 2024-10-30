@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour, IDamagable
 {
@@ -26,6 +27,9 @@ public class Player : MonoBehaviour, IDamagable
     private void OnEnable()
     {
         // TODO - add an animation event to play the spawn animation tween
+        //scale the player up from 0 to 1 in 1 second using DOTween
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);
         
     }
 
@@ -41,7 +45,7 @@ public class Player : MonoBehaviour, IDamagable
         GameManager.Instance.SetPlayerHealth(health);
         
         //TODO - add a camera shake effect when the player is hit
-        FeedbackEventManager.ShakeCamera(10f,3f,1f );
+        FeedbackEventManager.ShakeCamera(10f,4f,1f );
 
         ShowHitEffect();
 
