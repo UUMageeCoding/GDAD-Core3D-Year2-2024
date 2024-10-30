@@ -54,9 +54,10 @@ public class Shoot : MonoBehaviour
     }
 
     private void FireEffects(){
-        //TODO - add a muzzle flash effect when shooting??
+        //TODO - add a muzzle flash effect when shooting?? - some other time
         
         //TODO - add a camera shake effect when shooting
-        FeedbackEventManager.ShakeCamera(5f, 1f, 0.25f);
+        
+        
     }
 }
