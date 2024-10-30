@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     private float musicFadeDuration = 1.5f;
     private FadeType musicFadeType = FadeType.Crossfade;
     private bool isFading = false; // Flag to prevent multiple fades at once
+    private bool isPaused = false; // Tracks if the music is paused
 
     private Dictionary<int, AudioClip> musicTracks = new Dictionary<int, AudioClip>();
     private AudioSource currentMusicSource;
@@ -42,18 +43,28 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // --------------------------------------------------------------------------------------------
+    #region Event Subscriptions ------------------------------------
     private void OnEnable()
     {
         AudioEventManager.PlayBGM += PlayMusic;
+        AudioEventManager.StopBGM += StopMusic;
+        AudioEventManager.PauseBGM += PauseMusic;
         AudioEventManager.PlaySFX += PlaySoundEffect;
     }
 
     private void OnDisable()
     {
         AudioEventManager.PlayBGM -= PlayMusic;
+        AudioEventManager.StopBGM -= StopMusic;
+        AudioEventManager.PauseBGM -= PauseMusic;
         AudioEventManager.PlaySFX -= PlaySoundEffect;
     }
-
+    #endregion 
+    // --------------------------------------------------------------------------------------------
+    
+    // --------------------------------------------------------------------------------------------
+    #region Load Audio Resources ------------------------------------
     private void LoadAudioResources()
     {
         AudioClip[] bgmClips = Resources.LoadAll<AudioClip>("Audio/BGM");
@@ -70,7 +81,13 @@ public class AudioManager : MonoBehaviour
             soundEffectNames.Add(clip.name);
         }
     }
+    #endregion
+    // --------------------------------------------------------------------------------------------
 
+
+    // --------------------------------------------------------------------------------------------
+    #region Play Background Music ------------------------------------
+    
     // Event Method - Play background music by track number or name with optional volume and loop settings - calls appropriate overload based on parameters
     public void PlayMusic(int trackNumber, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loop = true)
     {
@@ -187,24 +204,133 @@ public class AudioManager : MonoBehaviour
         currentMusicSource = nextMusicSource;
         isFading = false; // Reset flag after fade completes
     }
+    #endregion
+    // --------------------------------------------------------------------------------------------
 
+
+    // --------------------------------------------------------------------------------------------
+    #region StopBackgroundMusic ------------------------------------
+    public void StopMusic(float fadeDuration)
+    {
+        musicFadeDuration = fadeDuration;
+        
+        // Check if there's music playing and that it's not already fading
+        if (currentMusicSource != null && currentMusicSource.isPlaying && !isFading)
+        {
+            StartCoroutine(FadeOutCurrentMusic());
+        }
+    }
+
+    private IEnumerator FadeOutCurrentMusic()
+    {
+        isFading = true;
+        float startVolume = currentMusicSource.volume;
+
+        // Fade out over musicFadeDuration
+        for (float t = 0; t < musicFadeDuration; t += Time.deltaTime)
+        {
+            currentMusicSource.volume = Mathf.Lerp(startVolume, 0, t / musicFadeDuration);
+            yield return null;
+        }
+
+        // Stop and clean up the music source after fade-out
+        currentMusicSource.Stop();
+        Destroy(currentMusicSource.gameObject);
+        currentMusicSource = null;  // Reset the currentMusicSource reference
+        isFading = false; // Allow other fades to proceed
+    }
+    #endregion
+    // --------------------------------------------------------------------------------------------
+
+    // --------------------------------------------------------------------------------------------
+    #region PauseBackgroundMusic ------------------------------------
+    public void PauseMusic(float fadeDuration)
+    {
+        // Check if a fade is already in progress to avoid interruptions
+        if (isFading) return;
+
+        musicFadeDuration = fadeDuration; // Set the fade duration for pausing
+        
+        // Toggle pause state
+        if (isPaused)
+        {
+            // Resume the music with fade-in if currently paused
+            StartCoroutine(FadeInMusic());
+        }
+        else
+        {
+            // Fade out and pause if currently playing
+            StartCoroutine(FadeOutAndPauseMusic());
+        }
+
+        isPaused = !isPaused; // Toggle the pause state
+    }
+    private IEnumerator FadeOutAndPauseMusic()
+    {
+        isFading = true;
+        float startVolume = currentMusicSource.volume;
+
+        for (float t = 0; t < musicFadeDuration; t += Time.deltaTime)
+        {
+            currentMusicSource.volume = Mathf.Lerp(startVolume, 0, t / musicFadeDuration);
+            yield return null;
+        }
+
+        currentMusicSource.Pause(); // Pause the music once fade-out completes
+        isFading = false;
+    }
+    private IEnumerator FadeInMusic()
+    {
+        isFading = true;
+        currentMusicSource.UnPause(); // Resume the music before fade-in
+        float targetVolume = 1.0f; // Set to the desired full volume
+
+        for (float t = 0; t < musicFadeDuration; t += Time.deltaTime)
+        {
+            currentMusicSource.volume = Mathf.Lerp(0, targetVolume, t / musicFadeDuration);
+            yield return null;
+        }
+
+        currentMusicSource.volume = targetVolume; // Ensure final volume is set
+        isFading = false;
+    }
+
+    #endregion
+    // --------------------------------------------------------------------------------------------
+    
+    
+    // --------------------------------------------------------------------------------------------
+    #region PlaySoundEffects ------------------------------------
     public void PlaySoundEffect(Transform attachTo, string soundName, float volume, float pitch, bool randomizePitch, float pitchRange, float spatialBlend)
     {
+        // Check if the sound effect exists in the dictionary
         if (!soundEffects.TryGetValue(soundName, out AudioClip clip))
         {
             Debug.LogWarning($"Sound '{soundName}' not found in Resources/Audio/SFX!");
             return;
         }
-
+        
+        // If no transform is provided, play the sound at the AudioManager's position with no spatial blend
+        if(attachTo == null)
+        {
+            attachTo = transform;
+            spatialBlend = 0;
+        }
+        
+        // Create a new GameObject to play the sound effect 
         GameObject sfxObject = Instantiate(soundEffectPrefab, attachTo.position, Quaternion.identity, attachTo);
         AudioSource sfxSource = sfxObject.GetComponent<AudioSource>();
 
+        // Set the AudioSource properties and play the sound effect
         sfxSource.clip = clip;
         sfxSource.volume = volume;
         sfxSource.pitch = randomizePitch ? Random.Range(pitch - pitchRange, pitch + pitchRange) * pitch : pitch;
         sfxSource.spatialBlend = spatialBlend;
         sfxSource.Play();
 
+        // Destroy the GameObject after the sound effect has finished playing
         Destroy(sfxObject, clip.length / sfxSource.pitch);
     }
+    #endregion
+    // --------------------------------------------------------------------------------------------
 }

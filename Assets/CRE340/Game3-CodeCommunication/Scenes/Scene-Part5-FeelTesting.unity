@@ -4062,7 +4062,7 @@ Transform:
   m_GameObject: {fileID: 1382946483}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.96}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4080,14 +4080,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdc11fe5b8416a4c83edb15b64fd82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventName: Custom BGM Event Name
   musicTrackNumber: 0
   musicTrackName: Synthpop Martini Main
-  playOnAwake: 1
+  playOnEnabled: 0
   loopBGM: 1
-  bgmVolume: 0.6
+  volume: 0.8
   fadeType: 0
-  fadeDuration: 1.5
-  playDelay: 2
+  fadeDuration: 1
+  eventDelay: 0.5
+  testMode: 0
 --- !u!1 &1383904467
 GameObject:
   m_ObjectHideFlags: 0
@@ -4417,7 +4419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1533272601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4439,7 +4441,7 @@ Transform:
   m_GameObject: {fileID: 1533272600}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47922662, y: 4.7009315, z: -5.7565103}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4463,7 +4465,7 @@ MonoBehaviour:
   fadeType: 0
   fadeDuration: 1.5
   loopBGM: 1
-  sfxName: Sci Fi Shotgun 8
+  sfxName: Pistol Shot 6
   sfxVolume: 1
   pitch: 1
   randomisePitch: 1
@@ -4481,12 +4483,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b675a75333cdca84b8f0b419d0080d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxName: SFM NAME HERE
-  sfxVolume: 1
+  eventName: Custom BGM Event Name
+  sfxName: Pistol Shot 6
+  playOnEnabled: 0
+  attachSoundToTransform: 1
+  volume: 1
   pitch: 1
   randomisePitch: 1
   pitchRange: 0.1
   spatialBlend: 0.5
+  eventDelay: 0
 --- !u!1001 &1559950729
 PrefabInstance:
   m_ObjectHideFlags: 0
