@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour, IDamagable
     private void OnEnable()
     {
         // TODO - add an animation event to play the spawn animation tween
-        
         //scale the enemy up from 0 to 1 in 1 second using DOTween
         transform.localScale = Vector3.zero;
         transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);

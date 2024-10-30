@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class FeedbackEventManager : MonoBehaviour
+public static class FeedbackEventManager
 {
     //define a delegate for camera shake events
     public delegate void CameraEvent_Shaker(float frequency, float amplitude, float duration);
@@ -14,5 +11,5 @@ public class FeedbackEventManager : MonoBehaviour
     public static CameraEvent_Shaker ShakeCamera;
     
     // Multi-delegate for triggering chromatic aberration events
-    public static ChromaticAberrationEvent ChromaticAberration;
+    public static ChromaticAberrationEvent ChromaticAberrationLerp;
 }
