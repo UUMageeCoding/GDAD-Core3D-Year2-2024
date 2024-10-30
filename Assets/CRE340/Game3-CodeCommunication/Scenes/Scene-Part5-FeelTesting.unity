@@ -4437,7 +4437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicTrackNumber: -1
   musicTrackName: Synthpop Martini Main
-  bgmVolume: 1
+  bgmVolume: 0.6
   fadeType: 0
   fadeDuration: 1.5
   loopBGM: 1

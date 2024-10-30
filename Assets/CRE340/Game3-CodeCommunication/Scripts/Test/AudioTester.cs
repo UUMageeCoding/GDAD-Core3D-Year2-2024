@@ -6,19 +6,19 @@ using UnityEngine.Serialization;
 public class AudioTester : MonoBehaviour
 {
     [Space(20)]
-    [Header("Background Music Event Parameters")]
+    [Header("Background Music Event Parameters (BGM)")]
     [Space(5)]
     public int musicTrackNumber = -1; 
     public string musicTrackName = "name";
     [Range(0,1f)]
-    public float bgmVolume = 1.0f;
+    public float bgmVolume = 0.6f;
     public FadeType fadeType = FadeType.Crossfade;
     [Range(0,5f)]
     public float fadeDuration = 1.5f;
     public bool loopBGM = true;
     
     [Space(20)]
-    [Header("Sound FX Event Parameters")]
+    [Header("Sound FX Event Parameters (SFX)")]
     [Space(5)]
     // parameters to pass with the SFX event
     public string sfxName = "name";
@@ -45,7 +45,7 @@ public class AudioTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             //example with explicit parameters passed
-            //AudioEventManager.OnPlayMusic(0, "Music Name Here", 1.0f, true);
+            //AudioEventManager.PlayBGM(0, "Music Name Here", 1.0f, FadeType.Crossfade, 2f,true);
             
             //example with parameters from the inspector
             AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, bgmVolume, fadeType, fadeDuration, loopBGM);
