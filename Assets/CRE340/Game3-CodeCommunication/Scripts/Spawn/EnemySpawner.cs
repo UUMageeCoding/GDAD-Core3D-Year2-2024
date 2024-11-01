@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public float startDelay = 1f;        // Delay before the first spawn
     public float minSpawnInterval = 2f;  // Minimum spawn interval (2 seconds)
     public float maxSpawnInterval = 5f;  // Maximum spawn interval (5 seconds)
-    public int maxSpawnedObjects = 10;   // Maximum number of spawned objects
+    public int maxSpawnedObjects = 100;   // Maximum number of spawned objects
 
     private List<EnemyBase> spawnedEnemies = new List<EnemyBase>();
 
