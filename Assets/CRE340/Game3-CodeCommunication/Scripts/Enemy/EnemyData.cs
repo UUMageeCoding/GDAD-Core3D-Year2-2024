@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEnemy", menuName = "Enemy/EnemyData")]
+[CreateAssetMenu(fileName = "NewEnemy", menuName = "Enemy/EnemyData", order = 1)]
 public class EnemyData : ScriptableObject
 {
     public string enemyName;  // Name of the enemy
@@ -8,5 +8,6 @@ public class EnemyData : ScriptableObject
     public int damage;        // Damage value for the enemy
     public float speed;       // Movement speed of the enemy
     public Color enemyColor;  // Color of the enemy
+    public GameObject enemyPrefab;  // Reference to the specific prefab for this enemy
 }
 
