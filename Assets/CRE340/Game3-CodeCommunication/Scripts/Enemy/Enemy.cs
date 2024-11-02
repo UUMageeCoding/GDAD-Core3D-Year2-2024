@@ -8,16 +8,15 @@ public class Enemy : EnemyBase
     public EnemyData enemyData; // Reference to the EnemyData ScriptableObject  
     [SerializeField] private int damage = 10; // Damage dealt by the enemy  
     [SerializeField] private int health = 10;  
-    [SerializeField] private float speed = 2f;  
+    public float speed = 2f;  
+    public float chaseRange = 5f;         // Range within which the enemy starts chasing  
     
     
     [Space(10)]  
     [Header("Enemy State")]  
     private IEnemyState currentState;     // Reference to the current state  
     public Transform target;              // Reference to the player or target  
-    public float chaseRange = 5f;         // Range within which the enemy starts chasing  
-    public float chaseSpeed = 3f;         // Speed of the enemy while chasing  
-  
+
     
     [Space(10)]  
     [Header("Enemy FX")]  
@@ -29,7 +28,8 @@ public class Enemy : EnemyBase
         gameObject.name = enemyData.enemyName;
         health = enemyData.health;
         damage = enemyData.damage;
-        chaseSpeed = enemyData.speed;
+        speed = enemyData.speed;
+        chaseRange = enemyData.chaseRange;
 
         // Set initial color based on EnemyData
         GetComponent<Renderer>().material.color = enemyData.enemyColor;
@@ -62,6 +62,17 @@ public class Enemy : EnemyBase
         currentState = newState;
         currentState?.Enter(this);
     }
+    
+    public string GetCurrentStateName()
+    {
+        if (currentState != null)
+        {
+            string stateName = currentState.GetType().Name;
+            return stateName.Replace("Enemy", "");
+        }
+        return "No State";
+    }
+
     
     //--------------------------------------------------------------------------------
     public override void TakeDamage(int damage)

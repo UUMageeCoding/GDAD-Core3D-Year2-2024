@@ -16,6 +16,7 @@ MonoBehaviour:
   health: 20
   damage: 10
   speed: 3
+  chaseRange: 20
   enemyColor: {r: 0, g: 0.4100864, b: 1, a: 1}
   enemyPrefab: {fileID: 3558379014972084002, guid: 754a144ea8d54764c8c7888e18b0156b,
     type: 3}

@@ -13,7 +13,7 @@ public class EnemyState_Chase : IEnemyState
     public void Update(Enemy enemy)
     {
         // Move towards the player
-        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemy.target.position, enemy.chaseSpeed * Time.deltaTime);
+        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemy.target.position, enemy.speed * Time.deltaTime);
 
         // Transition back to Idle if player is out of range
         if (Vector3.Distance(enemy.transform.position, enemy.target.position) > enemy.chaseRange)
