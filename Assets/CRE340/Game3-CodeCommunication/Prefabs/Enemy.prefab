@@ -151,9 +151,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 16c7590885f0fcf479df9d7f69ddbd61, type: 2}
+  damage: 10
+  health: 10
+  speed: 2
+  target: {fileID: 0}
+  chaseRange: 5
+  chaseSpeed: 3
   dieEffectPrefab: {fileID: 2266959994559975120, guid: 05b09e4a1f3b1d44bb86d2f25468b730,
     type: 3}
-  damage: 10
 --- !u!114 &1664679125019967939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +166,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6041641523765857172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c99cdde66a9393c42ad9ea13cd71dbbb, type: 3}
   m_Name: 

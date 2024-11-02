@@ -3,10 +3,25 @@ using DG.Tweening;
 
 public class Enemy : EnemyBase
 {
-    public EnemyData enemyData;         // Reference to the EnemyData ScriptableObject
-    public GameObject dieEffectPrefab;  // Reference to the die effect prefab
-    private int health;                 // Enemy health
-    public int damage = 10;             // Damage dealt by the enemy
+    [Space(10)]  
+    [Header("Enemy Data")]  
+    public EnemyData enemyData; // Reference to the EnemyData ScriptableObject  
+    [SerializeField] private int damage = 10; // Damage dealt by the enemy  
+    [SerializeField] private int health = 10;  
+    [SerializeField] private float speed = 2f;  
+    
+    
+    [Space(10)]  
+    [Header("Enemy State")]  
+    private IEnemyState currentState;     // Reference to the current state  
+    public Transform target;              // Reference to the player or target  
+    public float chaseRange = 5f;         // Range within which the enemy starts chasing  
+    public float chaseSpeed = 3f;         // Speed of the enemy while chasing  
+  
+    
+    [Space(10)]  
+    [Header("Enemy FX")]  
+    public GameObject dieEffectPrefab; // Reference to the die effect prefab  
 
     private void Awake()
     {
@@ -14,18 +29,41 @@ public class Enemy : EnemyBase
         gameObject.name = enemyData.enemyName;
         health = enemyData.health;
         damage = enemyData.damage;
+        chaseSpeed = enemyData.speed;
 
         // Set initial color based on EnemyData
         GetComponent<Renderer>().material.color = enemyData.enemyColor;
     }
-
+    private void Start()
+    {
+        // Start with the Idle state
+        SetState(new EnemyState_Idle());
+        
+        // Find the player in the scene
+        Invoke("LocatePlayer", 1f);
+    }
     private void OnEnable()
     {
         // Scale the enemy up from 0 to 1 over 1 second using DOTween for spawn animation
         transform.localScale = Vector3.zero;
         transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);
     }
-
+    
+    private void Update()
+    {
+        // Delegate behaviour to the current state
+        currentState?.Update(this);
+    }
+    
+    public void SetState(IEnemyState newState)
+    {
+        // Exit the current state and enter the new state
+        currentState?.Exit(this);
+        currentState = newState;
+        currentState?.Enter(this);
+    }
+    
+    //--------------------------------------------------------------------------------
     public override void TakeDamage(int damage)
     {
         health -= damage;
@@ -78,5 +116,15 @@ public class Enemy : EnemyBase
             damagableObject.TakeDamage(damage);
             Debug.Log($"{gameObject.name} dealt {damage} damage to {collision.gameObject.name}.");
         }
+    }
+    
+    private void LocatePlayer()
+    {
+        // Find the player in the scene if the player exaists
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        
     }
 }
