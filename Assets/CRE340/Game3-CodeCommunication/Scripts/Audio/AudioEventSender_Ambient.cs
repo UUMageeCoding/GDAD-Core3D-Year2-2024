@@ -32,10 +32,15 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
     [Range(0, 10f)]
     public float fadeDuration = 1.5f;
 
-    [Space(10)]
-    [Range(0, 5f)]
+    [Space(10)] 
+    [Range(0,5f)]
     public float eventDelay = 0f;
 
+    [Header("Collider Settings")]
+    public CollisionType collisionType = CollisionType.Trigger;
+    public string targetTag = "Player";
+    public bool stopOnExit = true;
+    
     [Space(20)]
     [Header("TestMode : 'M' to play ambient, 'N' to stop, 'B' to pause")]
     public bool testMode = false;
@@ -65,6 +70,22 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
             Stop();
         }
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (collisionType == CollisionType.Trigger && other.CompareTag(targetTag))
+        {
+            Play();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collisionType == CollisionType.Collision && collision.collider.CompareTag(targetTag))
+        {
+            Play();
+        }
+    }
 
     public void Play()
     {
@@ -91,6 +112,26 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
         AudioEventManager.PlayAmbientAudio(attachTo, ambientTrackNumber, ambientTrackName, volume, pitch, spatialBlend, fadeType, fadeDuration, loopAmbient, eventName);
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (collisionType == CollisionType.Trigger && other.CompareTag(targetTag))
+        {
+            if(stopOnExit){
+                Stop();
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collisionType == CollisionType.Collision && collision.collider.CompareTag(targetTag))
+        {
+            if(stopOnExit){
+                Stop();
+            }
+        }
+    }
+    
     public void Stop()
     {
         if (eventDelay <= 0)
@@ -105,17 +146,33 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
 
     private void StopAmbient()
     {
-        //send the StopAmbient Event with parameters from the inspector
-        AudioEventManager.StopAmbientAudio(fadeDuration);
+        if (AudioManager.Instance.isFadingAmbientAudio)
+        {
+            // Handle the stop request if the AudioManager is fading
+            StartCoroutine(WaitForFadeAndStop());
+        }
+        else
+        {
+            // Send the StopAmbient Event with parameters from the inspector
+            AudioEventManager.StopAmbientAudio(fadeDuration);
+        }
     }
 
     private IEnumerator StopAmbient_Delayed(float delay)
     {
         yield return new WaitForSeconds(delay);
-        //send the StopAmbient Event with parameters from the inspector
-        if (AudioManager.Instance.isActiveAndEnabled){
-            AudioEventManager.StopAmbientAudio(fadeDuration);
+        StopAmbient();
+    }
+
+    private IEnumerator WaitForFadeAndStop()
+    {
+        // Wait until the AudioManager is no longer fading
+        while (AudioManager.Instance.isFadingAmbientAudio)
+        {
+            yield return null;
         }
+        // Send the StopAmbient Event with parameters from the inspector
+        AudioEventManager.StopAmbientAudio(fadeDuration);
     }
 
     // pause the ambient audio
@@ -145,7 +202,7 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
     }
 
     //----------------- EDITOR / TESTING-----------------
-    // This section is only used in the editor to test the events - TODO ADD A CUSTOM EDITOR SCRIPT TO CALL THESE METHODS
+    // This section is only used in the editor to test the events 
     void Update()
     {
         if (testMode)

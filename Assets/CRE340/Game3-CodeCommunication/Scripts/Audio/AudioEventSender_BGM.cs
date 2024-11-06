@@ -142,18 +142,36 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
             StartCoroutine(StopBGM_Delayed(eventDelay));
         }
     }
+
     private void StopBGM()
     {
-        //send the StopBGM Event with parameters from the inspector
-        AudioEventManager.StopBGM(fadeDuration);
+        if (AudioManager.Instance.isFadingMusic)
+        {
+            // Handle the stop request if the AudioManager is fading
+            StartCoroutine(WaitForFadeAndStop());
+        }
+        else
+        {
+            // Send the StopBGM Event with parameters from the inspector
+            AudioEventManager.StopBGM(fadeDuration);
+        }
     }
+
     private IEnumerator StopBGM_Delayed(float delay)
     {
         yield return new WaitForSeconds(delay);
-        //send the StopBGM Event with parameters from the inspector
-        if(AudioManager.Instance.isActiveAndEnabled){
-            AudioEventManager.StopBGM(fadeDuration);
+        StopBGM();
+    }
+
+    private IEnumerator WaitForFadeAndStop()
+    {
+        // Wait until the AudioManager is no longer fading
+        while (AudioManager.Instance.isFadingMusic)
+        {
+            yield return null;
         }
+        // Send the StopBGM Event with parameters from the inspector
+        AudioEventManager.StopBGM(fadeDuration);
     }
     
     // pause the background music

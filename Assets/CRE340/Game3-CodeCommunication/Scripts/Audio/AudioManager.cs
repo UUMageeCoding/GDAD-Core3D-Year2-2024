@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     public GameObject musicPrefab;
     private float musicFadeDuration = 1.5f;
     private FadeType musicFadeType = FadeType.Crossfade;
-    private bool isFadingMusic = false; // Flag to prevent multiple fades at once
+    public bool isFadingMusic = false; // Flag to prevent multiple fades at once
     private bool isPausedMusic = false; // Tracks if the music is paused
 
     private Dictionary<int, AudioClip> musicTracks = new Dictionary<int, AudioClip>();
@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
     public GameObject ambientAudioPrefab;
     private float ambientFadeDuration = 1.5f;
     private FadeType ambientFadeType = FadeType.Crossfade;
-    private bool isFadingAmbientAudio = false; // Flag to prevent multiple fades at once
+    public bool isFadingAmbientAudio = false; // Flag to prevent multiple fades at once
     private bool isPausedAmbientAudio = false; // Tracks if the ambient audio is paused
     
     private Dictionary<int, AudioClip> ambientAudioTracks = new Dictionary<int, AudioClip>();
