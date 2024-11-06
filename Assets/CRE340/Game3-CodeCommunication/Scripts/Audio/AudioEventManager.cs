@@ -18,7 +18,7 @@ public static class AudioEventManager
     public delegate void AudioEvent_PauseBGM(float fadeDuration);
     
     //define a delegate for audio events - Ambient Music
-    public delegate void AudioEvent_PlayAmbientAudio(int index, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loopBGM, string eventName);
+    public delegate void AudioEvent_PlayAmbientAudio(Transform attachTo, int index, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loopBGM, string eventName);
     public delegate void AudioEvent_StopAmbientAudio(float fadeDuration);
     public delegate void AudioEvent_PauseAmbientAudio(float fadeDuration);
     
@@ -38,11 +38,11 @@ public static class AudioEventManager
     
     // --- Events --- Ambient Music
     // playing ambient music
-    public static AudioEvent_PlayAmbientAudio PlayAmbientMusic;
+    public static AudioEvent_PlayAmbientAudio PlayAmbientAudio;
     // stopping ambient music
-    public static AudioEvent_StopAmbientAudio StopAmbientMusic;
+    public static AudioEvent_StopAmbientAudio StopAmbientAudio;
     // pausing ambient music
-    public static AudioEvent_PauseAmbientAudio PauseAmbientMusic;
+    public static AudioEvent_PauseAmbientAudio PauseAmbientAudio;
     
     
     // --- Events --- SFX

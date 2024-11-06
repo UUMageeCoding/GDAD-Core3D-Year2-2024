@@ -48,9 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicPrefab: {fileID: 8822123416660145754, guid: 3cdffaf4f6279474bb77ea141cfc8c4e,
     type: 3}
+  ambientAudioPrefab: {fileID: 8822123416660145754, guid: 5ba075e53a53fc1459bdfc9d8b269d72,
+    type: 3}
   soundEffectPrefab: {fileID: 7698994631750102530, guid: fe18fd3b82aee3244a8132f55ee67eb0,
     type: 3}
   musicTrackNames: []
+  ambientAudioTrackNames: []
   soundEffectNames: []
 --- !u!114 &169545545418271244
 MonoBehaviour:
@@ -67,7 +70,7 @@ MonoBehaviour:
   eventName: Custom BGM Event Name
   musicTrackNumber: -1
   musicTrackName: Synthpop Martini Main
-  playOnEnabled: 1
+  playOnEnabled: 0
   loopBGM: 1
   volume: 0.6
   fadeType: 0
