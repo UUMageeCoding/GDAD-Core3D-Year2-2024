@@ -65,7 +65,7 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
 
     private void OnDisable()
     {
-        if (AudioManager.Instance.isActiveAndEnabled)
+        if (AudioManager.Instance != null && AudioManager.Instance.isActiveAndEnabled)
         {
             Stop();
         }

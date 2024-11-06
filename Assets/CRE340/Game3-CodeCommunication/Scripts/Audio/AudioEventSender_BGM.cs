@@ -40,7 +40,6 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
     public float fadeDuration = 1.5f;
     
     [Space(10)] 
-    public bool randomiseDelay = false;
     [Range(0,5f)]
     public float eventDelay = 0f;
     
@@ -67,7 +66,8 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
     }
 
     private void OnDisable(){
-        if (AudioManager.Instance.isActiveAndEnabled){
+        if (AudioManager.Instance != null && AudioManager.Instance.isActiveAndEnabled)
+        {
             Stop();
         }
     }
