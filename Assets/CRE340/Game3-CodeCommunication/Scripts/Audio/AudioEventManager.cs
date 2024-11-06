@@ -9,6 +9,7 @@ public enum FadeType
 }
 public enum CollisionType
 {
+    Null,
     Collision,
     Trigger
 }
