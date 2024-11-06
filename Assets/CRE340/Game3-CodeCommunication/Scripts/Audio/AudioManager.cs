@@ -20,8 +20,8 @@ public class AudioManager : MonoBehaviour
     public GameObject musicPrefab;
     private float musicFadeDuration = 1.5f;
     private FadeType musicFadeType = FadeType.Crossfade;
-    private bool isFading = false; // Flag to prevent multiple fades at once
-    private bool isPaused = false; // Tracks if the music is paused
+    private bool isFadingMusic = false; // Flag to prevent multiple fades at once
+    private bool isPausedMusic = false; // Tracks if the music is paused
 
     private Dictionary<int, AudioClip> musicTracks = new Dictionary<int, AudioClip>();
     private AudioSource currentMusicSource;
@@ -99,7 +99,7 @@ public class AudioManager : MonoBehaviour
     // Event Method - Play background music by track number or name with optional volume and loop settings - calls appropriate overload based on parameters
     public void PlayMusic(int trackNumber, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loop, string eventName)
     {
-        if (isFading) return; // Block if a fade/crossfade is already in progress
+        if (isFadingMusic) return; // Block if a fade/crossfade is already in progress
 
         musicFadeType = fadeType;
         musicFadeDuration = fadeDuration;
@@ -116,10 +116,10 @@ public class AudioManager : MonoBehaviour
     // Overload - Play background music by track number with optional volume and loop settings
     public void PlayMusic(int trackNumber, float volume = 1.0f, bool loop = true)
     {
-        if (isFading) return; // Block if a fade/crossfade is already in progress
+        if (isFadingMusic) return; // Block if a fade/crossfade is already in progress
 
         if (!musicTracks.TryGetValue(trackNumber, out AudioClip newTrack)) return;
-        isFading = true;
+        isFadingMusic = true;
         if (musicFadeType == FadeType.Crossfade)
         {
             StartCoroutine(CrossfadeMusic(newTrack, volume, loop));
@@ -132,13 +132,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string trackName, float volume = 1.0f, bool loop = true)
     {
-        if (isFading) return; // Block if a fade/crossfade is already in progress
+        if (isFadingMusic) return; // Block if a fade/crossfade is already in progress
 
         foreach (var track in musicTracks)
         {
             if (track.Value.name == trackName)
             {
-                isFading = true;
+                isFadingMusic = true;
                 if (musicFadeType == FadeType.Crossfade)
                 {
                     StartCoroutine(CrossfadeMusic(track.Value, volume, loop));
@@ -178,7 +178,7 @@ public class AudioManager : MonoBehaviour
 
         nextMusicSource.volume = targetVolume;
         currentMusicSource = nextMusicSource;
-        isFading = false; // Reset flag after crossfade completes
+        isFadingMusic = false; // Reset flag after crossfade completes
     }
 
     private IEnumerator FadeOutAndInMusic(AudioClip newTrack, float targetVolume, bool loop)
@@ -210,7 +210,7 @@ public class AudioManager : MonoBehaviour
 
         nextMusicSource.volume = targetVolume;
         currentMusicSource = nextMusicSource;
-        isFading = false; // Reset flag after fade completes
+        isFadingMusic = false; // Reset flag after fade completes
     }
     #endregion
     // --------------------------------------------------------------------------------------------
@@ -223,7 +223,7 @@ public class AudioManager : MonoBehaviour
         musicFadeDuration = fadeDuration;
         
         // Check if there's music playing and that it's not already fading
-        if (currentMusicSource != null && currentMusicSource.isPlaying && !isFading)
+        if (currentMusicSource != null && currentMusicSource.isPlaying && !isFadingMusic)
         {
             StartCoroutine(FadeOutCurrentMusic());
         }
@@ -231,7 +231,7 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator FadeOutCurrentMusic()
     {
-        isFading = true;
+        isFadingMusic = true;
         float startVolume = currentMusicSource.volume;
 
         // Fade out over musicFadeDuration
@@ -245,7 +245,7 @@ public class AudioManager : MonoBehaviour
         currentMusicSource.Stop();
         Destroy(currentMusicSource.gameObject);
         currentMusicSource = null;  // Reset the currentMusicSource reference
-        isFading = false; // Allow other fades to proceed
+        isFadingMusic = false; // Allow other fades to proceed
     }
     #endregion
     // --------------------------------------------------------------------------------------------
@@ -255,12 +255,12 @@ public class AudioManager : MonoBehaviour
     public void PauseMusic(float fadeDuration)
     {
         // Check if a fade is already in progress to avoid interruptions
-        if (isFading) return;
+        if (isFadingMusic) return;
 
         musicFadeDuration = fadeDuration; // Set the fade duration for pausing
         
         // Toggle pause state
-        if (isPaused)
+        if (isPausedMusic)
         {
             // Resume the music with fade-in if currently paused
             StartCoroutine(FadeInMusic());
@@ -271,11 +271,11 @@ public class AudioManager : MonoBehaviour
             StartCoroutine(FadeOutAndPauseMusic());
         }
 
-        isPaused = !isPaused; // Toggle the pause state
+        isPausedMusic = !isPausedMusic; // Toggle the pause state
     }
     private IEnumerator FadeOutAndPauseMusic()
     {
-        isFading = true;
+        isFadingMusic = true;
         float startVolume = currentMusicSource.volume;
 
         for (float t = 0; t < musicFadeDuration; t += Time.deltaTime)
@@ -285,11 +285,11 @@ public class AudioManager : MonoBehaviour
         }
 
         currentMusicSource.Pause(); // Pause the music once fade-out completes
-        isFading = false;
+        isFadingMusic = false;
     }
     private IEnumerator FadeInMusic()
     {
-        isFading = true;
+        isFadingMusic = true;
         currentMusicSource.UnPause(); // Resume the music before fade-in
         float targetVolume = 1.0f; // Set to the desired full volume
 
@@ -300,7 +300,7 @@ public class AudioManager : MonoBehaviour
         }
 
         currentMusicSource.volume = targetVolume; // Ensure final volume is set
-        isFading = false;
+        isFadingMusic = false;
     }
 
     #endregion

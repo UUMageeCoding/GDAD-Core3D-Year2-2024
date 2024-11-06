@@ -18,7 +18,7 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
     [Space(20)]
     ///  USE THIS AS A TAG TO DETERMINE WHICH EVENT TO SEND (Mutiple scripts can be attached to the same object)
     /// Loop through the AudioEventSender_SFX scripts on the object and send the event with the matching eventName
-    public string eventName = "Custom BGM Event Name"; 
+    public string eventName = "Custom SFX Event Name"; //for future use
     
     [Space(10)] 
     [Header("Sound FX Event Parameters (SFX)")] [Space(5)]
