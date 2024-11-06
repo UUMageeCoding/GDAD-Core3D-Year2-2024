@@ -45,17 +45,32 @@ public class AudioTester : MonoBehaviour
             //AudioEventManager.PlayBGM(0, "Music Name Here", 1.0f, FadeType.Crossfade, 2f,true);
             
             //example with parameters from the inspector
-            AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, bgmVolume, fadeType, fadeDuration, loopBGM);
+            AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, bgmVolume, fadeType, fadeDuration, loopBGM, "null");
         }
         
         //play sound effect when the space bar is pressed
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //example with explicit parameters passed
-            AudioEventManager.PlaySFX(this.transform, "SFX Name Here", 1.0f, 1.0f, true, 0.1f, 0f);
+            AudioEventManager.PlaySFX(this.transform, "SFX Name Here", 1.0f, 1.0f, true, 0.1f, 0f, "null");
             
             //example with parameters from the inspector
-            AudioEventManager.PlaySFX(this.transform, sfxName, sfxVolume, pitch, randomisePitch, pitchRange, spatialBlend);
+            AudioEventManager.PlaySFX(this.transform, sfxName, sfxVolume, pitch, randomisePitch, pitchRange, spatialBlend, "null");
+        }
+        
+        
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            //to play the event using the sender component - get the component attached to the gameobject and play the event
+            IAudioEventSender sfxSender = GetComponent<AudioEventSender_SFX>();
+            if (sfxSender != null)
+            {
+                sfxSender.Play();
+            }
+            
+            //to instanciate a new sender and play the event - updates are needed to set the parameters
+            // IAudioEventSender sfxSender = new AudioEventSender_SFX();
+            // sfxSender.Play();
         }
     }
 }

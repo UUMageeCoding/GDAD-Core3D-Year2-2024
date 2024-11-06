@@ -54,6 +54,6 @@ public class ExplodingCrate : MonoBehaviour, IDamagable
         }
         
         //TODO - add and audio feedback when the crate explodes
-        AudioEventManager.PlaySFX(null, "Explosion Short",  1.0f, 1.0f, true, 0.1f, 0f);
+        AudioEventManager.PlaySFX(null, "Explosion Short",  1.0f, 1.0f, true, 0.1f, 0f,"null");
     }
 }

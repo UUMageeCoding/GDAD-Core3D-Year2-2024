@@ -102,7 +102,7 @@ public class Enemy : EnemyBase
         }
 
         // Play sound when the enemy dies
-        AudioEventManager.PlaySFX(null, "Explosion Flesh", 1.0f, 1.0f, true, 0.1f, 0f);
+        AudioEventManager.PlaySFX(null, "Explosion Flesh", 1.0f, 1.0f, true, 0.1f, 0f, "null");
 
         Destroy(gameObject); // Destroy the enemy GameObject
         Debug.Log("Enemy has died");

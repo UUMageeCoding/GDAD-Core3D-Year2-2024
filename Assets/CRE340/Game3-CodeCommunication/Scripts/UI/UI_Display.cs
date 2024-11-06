@@ -42,7 +42,7 @@ public class UI_Display : MonoBehaviour
             scoreText.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.5f, 10, 1f);
             
             //TODO - add a score sound effect
-            AudioEventManager.PlaySFX(null, "UI Beep",  1.0f, 1.0f, true, 0.1f, 0f);
+            AudioEventManager.PlaySFX(null, "UI Beep",  1.0f, 1.0f, true, 0.1f, 0f, "null");
         }
     }
 }

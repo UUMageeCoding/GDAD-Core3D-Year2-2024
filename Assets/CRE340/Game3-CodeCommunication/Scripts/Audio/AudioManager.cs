@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// The AudioManager class is responsible for managing background music and sound effects in the game.
+/// It handles loading audio resources, playing, stopping, and pausing background music with fade effects,
+/// and playing sound effects with various parameters such as volume, pitch, and spatial blend.
+/// This class uses the singleton pattern to ensure only one instance is active at any time.
+/// The methods of this class are called via events defined in the AudioEventManager.
+/// </summary>
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
@@ -89,7 +97,7 @@ public class AudioManager : MonoBehaviour
     #region Play Background Music ------------------------------------
     
     // Event Method - Play background music by track number or name with optional volume and loop settings - calls appropriate overload based on parameters
-    public void PlayMusic(int trackNumber, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loop = true)
+    public void PlayMusic(int trackNumber, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loop, string eventName)
     {
         if (isFading) return; // Block if a fade/crossfade is already in progress
 
@@ -301,7 +309,7 @@ public class AudioManager : MonoBehaviour
     
     // --------------------------------------------------------------------------------------------
     #region PlaySoundEffects ------------------------------------
-    public void PlaySoundEffect(Transform attachTo, string soundName, float volume, float pitch, bool randomizePitch, float pitchRange, float spatialBlend)
+    public void PlaySoundEffect(Transform attachTo, string soundName, float volume, float pitch, bool randomizePitch, float pitchRange, float spatialBlend, string eventName)
     {
         // Check if the sound effect exists in the dictionary
         if (!soundEffects.TryGetValue(soundName, out AudioClip clip))

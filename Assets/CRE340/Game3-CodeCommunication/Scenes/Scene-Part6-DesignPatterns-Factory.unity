@@ -4278,6 +4278,7 @@ GameObject:
   - component: {fileID: 1382946486}
   - component: {fileID: 1382946485}
   - component: {fileID: 1382946487}
+  - component: {fileID: 1382946488}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -4331,14 +4332,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: Custom BGM Event Name
-  musicTrackNumber: 0
+  musicTrackNumber: -1
   musicTrackName: Synthpop Martini Main
-  playOnEnabled: 1
+  playOnEnabled: 0
   loopBGM: 1
   volume: 0.6
   fadeType: 0
   fadeDuration: 2
   eventDelay: 1
+  testMode: 0
+--- !u!114 &1382946488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382946483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b675a75333cdca84b8f0b419d0080d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: Custom BGM Event Name
+  sfxName: Pistol Shot
+  playOnEnabled: 0
+  attachSoundToTransform: 1
+  volume: 1
+  pitch: 1
+  randomisePitch: 1
+  pitchRange: 0.1
+  spatialBlend: 0.5
+  eventDelay: 0
   testMode: 0
 --- !u!1 &1383904467
 GameObject:
@@ -4704,7 +4728,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533272600}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b43c43d06f8a47d4a84f8af9533ad8a5, type: 3}
   m_Name: 
@@ -4728,7 +4752,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533272600}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b675a75333cdca84b8f0b419d0080d84, type: 3}
   m_Name: 
@@ -4743,6 +4767,7 @@ MonoBehaviour:
   pitchRange: 0.1
   spatialBlend: 0.5
   eventDelay: 0
+  testMode: 0
 --- !u!1001 &1559950729
 PrefabInstance:
   m_ObjectHideFlags: 0

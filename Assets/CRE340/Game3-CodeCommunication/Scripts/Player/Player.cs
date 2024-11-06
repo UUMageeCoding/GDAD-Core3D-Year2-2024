@@ -73,7 +73,7 @@ public class Player : MonoBehaviour, IDamagable
         }
 
         //TODO - add and audio feedback when the player dies
-        AudioEventManager.PlaySFX(null, "Impact Generic",  1.0f, 1.0f, true, 0.1f, 0f);
+        AudioEventManager.PlaySFX(null, "Impact Generic",  1.0f, 1.0f, true, 0.1f, 0f, "null");
         
         
         // Optional: Add any additional death logic (e.g., respawn, game over)
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour, IDamagable
         Invoke("ResetMaterial", 0.1f);
         
         //TODO - add an audio feedback when the player is hit
-        AudioEventManager.PlaySFX(this.transform, "Debuff",  1.0f, 1.0f, true, 0.1f, 0f);
+        AudioEventManager.PlaySFX(this.transform, "Debuff",  1.0f, 1.0f, true, 0.1f, 0f, "null");
     }
 
     private void ResetMaterial()

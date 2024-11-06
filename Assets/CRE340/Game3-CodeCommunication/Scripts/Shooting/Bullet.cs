@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
             damageable.ShowHitEffect();
             
             //TODO - add an audio feedback when hitting an object
-            AudioEventManager.PlaySFX(this.transform, "Slap Heavy",  1.0f, 1.0f, true, 0.1f, 0f);
+            AudioEventManager.PlaySFX(this.transform, "Slap Heavy",  1.0f, 1.0f, true, 0.1f, 0f, "null");
         }
 
     }

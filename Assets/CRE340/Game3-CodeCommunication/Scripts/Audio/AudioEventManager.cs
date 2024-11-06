@@ -13,12 +13,12 @@ public static class AudioEventManager
 {
     
     //define a delegate for audio events - BGM
-    public delegate void AudioEvent_PlayBGM(int index, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loopBGM);
+    public delegate void AudioEvent_PlayBGM(int index, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loopBGM, string eventName);
     public delegate void AudioEvent_StopBGM(float fadeDuration);
     public delegate void AudioEvent_PauseBGM(float fadeDuration);
     
     // Define a delegate for audio events - SFX
-    public delegate void AudioEvent_PlaySFX(Transform attachTo, string soundName, float volume, float pitch, bool randomizePitch, float pitchRange,  float spatialBlend);
+    public delegate void AudioEvent_PlaySFX(Transform attachTo, string soundName, float volume, float pitch, bool randomizePitch, float pitchRange,  float spatialBlend, string eventName);
     
     // --- Multi-delegates ---
     

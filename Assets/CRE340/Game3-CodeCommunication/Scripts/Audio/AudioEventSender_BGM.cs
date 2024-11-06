@@ -13,17 +13,18 @@ using UnityEngine.Serialization;
 ///     
 /// </summary>
 
-public class AudioEventSender_BGM : MonoBehaviour
+public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
 {
     [Space(20)]
     ///  USE THIS TO DETERMINE WHICH EVENT TO SEND (Mutiple scripts can be attached to the same object)
     /// Loop through the AudioEventSender_BGM scripts on the object and send the event with the matching eventName
-    public string eventName = "Custom BGM Event Name";
+    public string eventName = "Custom BGM Event Name"; //for future use
 
     
     [Space(10)]
     [Header("Background Music Event Parameters (BGM)")]
     [Space(20)]
+    [Tooltip("The track number of the music to play - used if no name is given -1 to ignore")]
     public int musicTrackNumber = 0; // WILL USE THE TRACK NUMBER IF NO NAME IS GIVEN
     public string musicTrackName = "TRACK NAME HERE"; //IF NO NAME IS GIVEN, THE TRACK NUMBER WILL BE USED
     
@@ -79,14 +80,14 @@ public class AudioEventSender_BGM : MonoBehaviour
     private void PlayBGM()
     {
         //send the PlayBGM Event with parameters from the inspector
-        AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, volume, fadeType, fadeDuration, loopBGM);
+        AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, volume, fadeType, fadeDuration, loopBGM, eventName);
     }
     
     private IEnumerator PlayBGM_Delayed(float delay)
     {
         yield return new WaitForSeconds(delay);
         //send the PlayBGM Event with parameters from the inspector
-        AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, volume, fadeType, fadeDuration, loopBGM);
+        AudioEventManager.PlayBGM(musicTrackNumber, musicTrackName, volume, fadeType, fadeDuration, loopBGM, eventName);
        
     }
 
