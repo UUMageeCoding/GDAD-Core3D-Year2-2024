@@ -127,7 +127,7 @@ MonoBehaviour:
   fadeType: 0
   fadeDuration: 2
   eventDelay: 0
-  collisionType: 1
+  collisionType: 2
   targetTag: Player
   stopOnExit: 1
   testMode: 0

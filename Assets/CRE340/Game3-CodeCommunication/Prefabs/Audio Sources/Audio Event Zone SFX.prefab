@@ -131,6 +131,6 @@ MonoBehaviour:
   randomiseDelay: 0
   eventDelay: 0
   percentageChanceToPlay: 100
-  collisionType: 1
+  collisionType: 2
   targetTag: Player
   testMode: 0
