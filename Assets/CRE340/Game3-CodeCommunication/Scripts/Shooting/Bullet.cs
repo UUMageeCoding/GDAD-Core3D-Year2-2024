@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         }
         
         // if the bullet hits anything, send a sfx event to play the bullet hit sound
-        AudioEventManager.PlaySFX(this.transform, "Dry Shot",  0.5f, 1.5f, true, 0.2f, 0f, "null");
+        AudioEventManager.PlaySFX(this.transform, "Dry Shot",  0.3f, 1.5f, true, 0.2f, 1f, "null");
 
     }
 }
