@@ -67,7 +67,7 @@ MonoBehaviour:
   eventName: Custom BGM Event Name
   musicTrackNumber: -1
   musicTrackName: Synthpop Martini Main
-  playOnEnabled: 0
+  playOnEnabled: 1
   loopBGM: 1
   volume: 0.6
   fadeType: 0
