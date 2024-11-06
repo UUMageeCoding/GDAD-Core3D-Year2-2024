@@ -26,8 +26,10 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
     [Space(10)]
     [Range(0, 1f)]
     public float volume = 0.8f;
+    [Range(0, 2f)] public float pitch = 1.0f;
+    [Range(0, 1f)] public float spatialBlend = 0.5f;
     public FadeType fadeType = FadeType.FadeInOut;
-    [Range(0, 5f)]
+    [Range(0, 10f)]
     public float fadeDuration = 1.5f;
 
     [Space(10)]
@@ -79,14 +81,14 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
     private void PlayAmbient()
     {
         //send the PlayAmbient Event with parameters from the inspector
-        AudioEventManager.PlayAmbientAudio(attachTo,ambientTrackNumber, ambientTrackName, volume, fadeType, fadeDuration, loopAmbient, eventName);
+        AudioEventManager.PlayAmbientAudio(attachTo,ambientTrackNumber, ambientTrackName, volume, pitch, spatialBlend, fadeType, fadeDuration, loopAmbient, eventName);
     }
 
     private IEnumerator PlayAmbient_Delayed(float delay)
     {
         yield return new WaitForSeconds(delay);
         //send the PlayAmbient Event with parameters from the inspector
-        AudioEventManager.PlayAmbientAudio(attachTo, ambientTrackNumber, ambientTrackName, volume, fadeType, fadeDuration, loopAmbient, eventName);
+        AudioEventManager.PlayAmbientAudio(attachTo, ambientTrackNumber, ambientTrackName, volume, pitch, spatialBlend, fadeType, fadeDuration, loopAmbient, eventName);
     }
 
     public void Stop()

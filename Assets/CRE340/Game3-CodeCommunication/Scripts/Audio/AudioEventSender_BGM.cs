@@ -36,7 +36,7 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
     [Range(0,1f)]
     public float volume = 0.8f;
     public FadeType fadeType = FadeType.FadeInOut;
-    [Range(0,5f)]
+    [Range(0,10f)]
     public float fadeDuration = 1.5f;
     
     [Space(10)]

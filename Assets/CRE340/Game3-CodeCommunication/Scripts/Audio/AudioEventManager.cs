@@ -18,7 +18,7 @@ public static class AudioEventManager
     public delegate void AudioEvent_PauseBGM(float fadeDuration);
     
     //define a delegate for audio events - Ambient Music
-    public delegate void AudioEvent_PlayAmbientAudio(Transform attachTo, int index, string trackName, float volume, FadeType fadeType, float fadeDuration, bool loopBGM, string eventName);
+    public delegate void AudioEvent_PlayAmbientAudio(Transform attachTo, int index, string trackName, float volume, float pitch, float spatialBlend, FadeType fadeType, float fadeDuration, bool loopAmbient, string eventName);
     public delegate void AudioEvent_StopAmbientAudio(float fadeDuration);
     public delegate void AudioEvent_PauseAmbientAudio(float fadeDuration);
     
