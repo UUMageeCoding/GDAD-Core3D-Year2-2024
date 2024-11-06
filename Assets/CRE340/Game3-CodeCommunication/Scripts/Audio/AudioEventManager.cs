@@ -7,6 +7,11 @@ public enum FadeType
     FadeInOut,
     Crossfade
 }
+public enum CollisionType
+{
+    Collision,
+    Trigger
+}
 
 // A simple class to define delegates for audio-related events
 public static class AudioEventManager

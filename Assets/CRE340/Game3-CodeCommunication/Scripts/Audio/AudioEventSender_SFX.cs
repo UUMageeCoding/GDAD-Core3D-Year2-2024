@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// to be attached to a GameObject that will send an audio event TO PLAY A SOUND EFFECT
@@ -36,9 +34,20 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
     [Range(0, 1f)] public float pitchRange = 0.1f;
     [Range(0, 1f)] public float spatialBlend = 0.5f;
 
-    [Space(10)]
+    [Space(10)] 
+    public bool randomiseDelay = false;
     [Range(0,5f)]
     public float eventDelay = 0f;
+    
+    [Space(10)]
+    [Range(0,100)]
+    public int percentageChanceToPlay = 100;
+
+
+    [Header("Collider Settings")] 
+    public CollisionType collisionType = CollisionType.Trigger; // Use trigger or collision
+    public string targetTag = "Player"; // Tag of the object that can trigger the event
+
 
     [Space(20)]
     [Header("TestMode : 'T' to play sound effect")]
@@ -57,7 +66,31 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
         }
     }
     
+    private void OnTriggerEnter(Collider other)
+    {
+        if (collisionType == CollisionType.Trigger && other.CompareTag(targetTag))
+        {
+            Play();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collisionType == CollisionType.Collision && collision.collider.CompareTag(targetTag))
+        {
+            Play();
+        }
+    }
+    
     public void Play(){
+        //check if the sound should play based on the percentage chance
+        if (percentageChanceToPlay < 100){
+            int random = Random.Range(0, 100);
+            if (random > percentageChanceToPlay){
+                return;
+            }
+        }
+        
         if(eventDelay <= 0)
         {
             PlaySFX();
@@ -81,6 +114,10 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
     }
     private IEnumerator PlaySFX_Delayed(float delay)
     {
+        if(randomiseDelay){
+            delay = Random.Range(0, eventDelay);
+        }
+        
         yield return new WaitForSeconds(delay);
         
         if (attachSoundToTransform){

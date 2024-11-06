@@ -39,9 +39,15 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
     [Range(0,10f)]
     public float fadeDuration = 1.5f;
     
-    [Space(10)]
+    [Space(10)] 
+    public bool randomiseDelay = false;
     [Range(0,5f)]
     public float eventDelay = 0f;
+    
+    [Header("Collider Settings")]
+    public CollisionType collisionType = CollisionType.Trigger;
+    public string targetTag = "Player";
+    public bool stopOnExit = true;
     
     [Space(20)]
     [Header("TestMode : 'M' to play music, 'N' to stop, 'B' to pause")]
@@ -63,6 +69,22 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
     private void OnDisable(){
         if (AudioManager.Instance.isActiveAndEnabled){
             Stop();
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (collisionType == CollisionType.Trigger && other.CompareTag(targetTag))
+        {
+            Play();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collisionType == CollisionType.Collision && collision.collider.CompareTag(targetTag))
+        {
+            Play();
         }
     }
 
@@ -91,6 +113,26 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
        
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (collisionType == CollisionType.Trigger && other.CompareTag(targetTag))
+        {
+            if(stopOnExit){
+                Stop();
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collisionType == CollisionType.Collision && collision.collider.CompareTag(targetTag))
+        {
+            if(stopOnExit){
+                Stop();
+            }
+        }
+    }
+    
     public void Stop(){
         if(eventDelay <= 0){
             StopBGM();
@@ -109,7 +151,9 @@ public class AudioEventSender_BGM : MonoBehaviour, IAudioEventSender
     {
         yield return new WaitForSeconds(delay);
         //send the StopBGM Event with parameters from the inspector
-        AudioEventManager.StopBGM(fadeDuration);
+        if(AudioManager.Instance.isActiveAndEnabled){
+            AudioEventManager.StopBGM(fadeDuration);
+        }
     }
     
     // pause the background music

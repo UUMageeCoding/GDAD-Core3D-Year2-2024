@@ -113,7 +113,9 @@ public class AudioEventSender_Ambient : MonoBehaviour, IAudioEventSender
     {
         yield return new WaitForSeconds(delay);
         //send the StopAmbient Event with parameters from the inspector
-        AudioEventManager.StopAmbientAudio(fadeDuration);
+        if (AudioManager.Instance.isActiveAndEnabled){
+            AudioEventManager.StopAmbientAudio(fadeDuration);
+        }
     }
 
     // pause the ambient audio
