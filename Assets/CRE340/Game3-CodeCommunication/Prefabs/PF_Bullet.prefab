@@ -165,8 +165,8 @@ MonoBehaviour:
   destroyAfterTime: 1
   destructionTime: 8
   destroyOnCollision: 1
-  collisionDestroyThreshold: 1
-  destroyOffScreen: 1
+  collisionDestroyThreshold: 2
+  destroyOffScreen: 0
   destroyIfIdle: 0
   idleTimeThreshold: 1
 --- !u!82 &756070346506040310

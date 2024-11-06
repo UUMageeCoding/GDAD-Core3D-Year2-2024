@@ -46,10 +46,14 @@ public class Player : MonoBehaviour, IDamagable
         GameManager.Instance.SetPlayerHealth(health);
         
         //TODO - add a camera shake effect when the player is hit
-        FeedbackEventManager.ShakeCamera(10f,4f,1f );
-        
+        if (FeedbackEventManager.ShakeCamera != null){
+            FeedbackEventManager.ShakeCamera(10f, 4f, 1f);
+        }
+
         //TODO - add a chromatic aberation lerp effect when the player is hit
-        FeedbackEventManager.ChromaticAberrationLerp(1f, 1.0f);
+        if (FeedbackEventManager.ChromaticAberrationLerp != null){
+            FeedbackEventManager.ChromaticAberrationLerp(1f, 1.0f);
+        }
 
         ShowHitEffect();
 
