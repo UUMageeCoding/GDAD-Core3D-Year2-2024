@@ -21,7 +21,8 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
     [Space(10)] 
     [Header("Sound FX Event Parameters (SFX)")] [Space(5)]
     [Space(20)]
-    public string sfxName = "SFM NAME HERE";
+    public string [] sfxName = new string[1]; // The name of the sound effects to play - can be multiple sounds to play randomly
+    private string sfxNameToPlay; // The name of the sound effect to play
     
     [Space(20)]
     public bool playOnEnabled = true;
@@ -91,6 +92,8 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
             }
         }
         
+        sfxNameToPlay = sfxName[Random.Range(0, sfxName.Length)];
+        
         if(eventDelay <= 0)
         {
             PlaySFX();
@@ -105,11 +108,11 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
     {
         if (attachSoundToTransform){
             //send the PlaySFX Event with parameters from the inspector
-            AudioEventManager.PlaySFX(this.transform, sfxName, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
+            AudioEventManager.PlaySFX(this.transform, sfxNameToPlay, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
         }
         else{
             //send the PlaySFX Event with parameters from the inspector
-            AudioEventManager.PlaySFX(null, sfxName, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
+            AudioEventManager.PlaySFX(null, sfxNameToPlay, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
         }
     }
     private IEnumerator PlaySFX_Delayed(float delay)
@@ -122,11 +125,11 @@ public class AudioEventSender_SFX : MonoBehaviour, IAudioEventSender
         
         if (attachSoundToTransform){
             //send the PlaySFX Event with parameters from the inspector
-            AudioEventManager.PlaySFX(this.transform, sfxName, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
+            AudioEventManager.PlaySFX(this.transform, sfxNameToPlay, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
         }
         else{
             //send the PlaySFX Event with parameters from the inspector
-            AudioEventManager.PlaySFX(null, sfxName, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
+            AudioEventManager.PlaySFX(null, sfxNameToPlay, volume, pitch, randomisePitch, pitchRange, spatialBlend, eventName);
         }
     }
     
