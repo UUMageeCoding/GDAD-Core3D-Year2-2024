@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class EnemyState_Idle : IEnemyState
 {
+    private float patrolProbability = 0.001f; // 0.01% chance each frame to start patrolling
+
     public void Enter(Enemy enemy)
     {
         Debug.Log("Entering Idle State");
-        // Additional setup if needed (e.g., animation)
     }
 
     public void Update(Enemy enemy)
     {
-        if(enemy.target == null)
-        {
-            return;
-        }
-        // Simple transition condition: switch to Chase if player is within a certain distance
-        if (Vector3.Distance(enemy.transform.position, enemy.target.position) < enemy.chaseRange)
+        // Check for player in range to switch to Chase
+        if (enemy.target != null && Vector3.Distance(enemy.transform.position, enemy.target.position) < enemy.chaseRange)
         {
             enemy.SetState(new EnemyState_Chase());
+            return;
+        }
+
+        // Randomly decide to switch to Patrol state
+        if (Random.value < patrolProbability)
+        {
+            enemy.SetState(new EnemyState_Patrol());
         }
     }
 
     public void Exit(Enemy enemy)
     {
         Debug.Log("Exiting Idle State");
-        // Clean up if needed
     }
 }
