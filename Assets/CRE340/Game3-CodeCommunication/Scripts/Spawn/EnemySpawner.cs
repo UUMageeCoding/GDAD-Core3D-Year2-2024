@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public float startDelay = 1f;        // Delay before the first spawn
     public float minSpawnInterval = 2f;  // Minimum spawn interval (2 seconds)
     public float maxSpawnInterval = 5f;  // Maximum spawn interval (5 seconds)
-    public int maxSpawnedObjects = 100;   // Maximum number of spawned objects
+    public int maxSpawnedObjects = 100;  // Maximum number of spawned objects
 
     private List<EnemyBase> spawnedEnemies = new List<EnemyBase>();
 
@@ -40,12 +40,12 @@ public class EnemySpawner : MonoBehaviour
         int randomIndex = Random.Range(0, enemyTypes.Length);
         EnemyData selectedEnemyData = enemyTypes[randomIndex];
 
-        // Generate a random spawn position within the spawn area
+        // Generate a random spawn position within the spawn area relative to the spawner's position
         Vector3 randomPosition = new Vector3(
             Random.Range(-spawnArea.x / 2, spawnArea.x / 2),
             Random.Range(0, spawnArea.y),
             Random.Range(-spawnArea.z / 2, spawnArea.z / 2)
-        );
+        ) + transform.position;
 
         // Use the factory to create the enemy
         EnemyBase enemy = EnemyFactory.CreateEnemy(selectedEnemyData, randomPosition);
@@ -54,5 +54,12 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnedEnemies.Add(enemy);
         }
+    }
+    
+    // Method to visualize the spawn area in the Scene view
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, spawnArea);
     }
 }

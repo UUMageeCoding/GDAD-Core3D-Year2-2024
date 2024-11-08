@@ -49,16 +49,15 @@ public class ObjectSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, objectPrefabs.Length);
         GameObject prefabToSpawn = objectPrefabs[randomIndex];
 
-        // Generate a random position within the spawn area
+        // Generate a random position within the spawn area relative to the spawner's position
         Vector3 randomPosition = new Vector3(
             Random.Range(-spawnArea.x / 2, spawnArea.x / 2),
             Random.Range(0, spawnArea.y),
             Random.Range(-spawnArea.z / 2, spawnArea.z / 2)
-        );
+        ) + transform.position;
 
         // Instantiate the prefab at the random position
         GameObject spawnedObject = Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
-        
 
         // Add the newly spawned object to the list
         spawnedObjects.Add(spawnedObject);
