@@ -8,18 +8,21 @@ public class ObjectSpawner : MonoBehaviour
 {
     public GameObject[] objectPrefabs;  // Array of prefabs to spawn
     public Vector3 spawnArea;           // x, y, z (width, height, depth) of the spawn area
+    public Vector3 playerCheckArea;     // x, y, z (width, height, depth) of the player check area
     public float startDelay = 1f;       // Delay before the first spawn
     public float minSpawnInterval = 2f; // Minimum spawn interval (2 seconds)
     public float maxSpawnInterval = 5f; // Maximum spawn interval (5 seconds)
     public int maxSpawnedObjects = 10;  // Maximum number of spawned objects
+    public LayerMask playerLayer;       // Layer mask to identify the player
 
     // List to store references to all spawned objects
     public List<GameObject> spawnedObjects = new List<GameObject>();
-    
-    //event to notify when the object is spawned
+
+    // Event to notify when the object is spawned
     public static event Action<GameObject, float> OnObjectSpawned;
 
-    void Start(){
+    void Start()
+    {
         StartCoroutine(Spawner());
     }
 
@@ -32,10 +35,17 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator Spawner(){
+    private IEnumerator Spawner()
+    {
         yield return new WaitForSeconds(startDelay);
         // Start invoking the SpawnObject method at a random interval
         InvokeRepeating("SpawnRandomObject", Random.Range(minSpawnInterval, maxSpawnInterval), Random.Range(minSpawnInterval, maxSpawnInterval));
+    }
+
+    private bool IsPlayerInArea()
+    {
+        Collider[] colliders = Physics.OverlapBox(transform.position, playerCheckArea / 2, Quaternion.identity, playerLayer);
+        return colliders.Length > 0;
     }
 
     void SpawnRandomObject()
@@ -44,6 +54,9 @@ public class ObjectSpawner : MonoBehaviour
 
         // Check if the number of spawned objects has reached the limit
         if (spawnedObjects.Count >= maxSpawnedObjects) return;
+
+        // Check if the player is in the defined area
+        if (!IsPlayerInArea()) return;
 
         // Pick a random prefab from the array
         int randomIndex = Random.Range(0, objectPrefabs.Length);
@@ -67,11 +80,14 @@ public class ObjectSpawner : MonoBehaviour
         Invoke("SpawnRandomObject", Random.Range(minSpawnInterval, maxSpawnInterval)); // Schedule the next spawn
     }
 
-    // Method to visualize the spawn area in the Scene view
+    // Method to visualize the spawn and player check areas in the Scene view
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, spawnArea);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(transform.position, playerCheckArea);
     }
 
     // For teaching purposes, you could add a method to access or manipulate the list, like this:
