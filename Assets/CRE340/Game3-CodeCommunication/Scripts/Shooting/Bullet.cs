@@ -23,6 +23,9 @@ public class Bullet : MonoBehaviour
         //enable rigidbody gravity
         rb.useGravity = true;
         
+        //disable the bullet's collider
+        GetComponent<Collider>().enabled = false;
+        
         //check if the bullet hit something that has the 'IDamagable' interface
         if (collision.gameObject.GetComponent<IDamagable>() != null){
             IDamagable damageable = collision.gameObject.GetComponent<IDamagable>();

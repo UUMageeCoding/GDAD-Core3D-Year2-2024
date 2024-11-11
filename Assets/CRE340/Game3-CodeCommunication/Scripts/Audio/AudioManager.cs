@@ -111,7 +111,7 @@ public class AudioManager : MonoBehaviour
             musicTrackNames.Add(bgmClips[i].name);
         }
         
-        AudioClip[] ambientClips = Resources.LoadAll<AudioClip>("Audio/Ambience-Music");
+        AudioClip[] ambientClips = Resources.LoadAll<AudioClip>("Audio/Ambient");
         for (int i = 0; i < ambientClips.Length; i++)
         {
             ambientAudioTracks[i] = ambientClips[i];
