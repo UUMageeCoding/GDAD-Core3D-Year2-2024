@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4143875723567624004}
   - component: {fileID: 988810612078860547}
   - component: {fileID: 7654785087657637558}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Forward Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163594557728267610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 6883610940364556481}
   - component: {fileID: 5059121526303444651}
   - component: {fileID: 3334680547059635523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 3033370586675844142}
   - component: {fileID: 9090336757716113164}
   - component: {fileID: 4304513940691687458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 3614365750700820741}
   - component: {fileID: 601153806180841911}
   - component: {fileID: 6116169631854235672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player_alt
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01267d0e8e850ef459f9b82b0f956500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 8
   rotationSpeed: 1080
 --- !u!114 &8430797510594913607
 MonoBehaviour:
