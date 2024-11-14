@@ -42,12 +42,12 @@ public static class AudioEventManager
     public static AudioEvent_PauseBGM PauseBGM;
     
     
-    // --- Events --- Ambient Music
-    // playing ambient music
+    // --- Events --- Ambient Audio
+    // playing ambient audio
     public static AudioEvent_PlayAmbientAudio PlayAmbientAudio;
-    // stopping ambient music
+    // stopping ambient audio
     public static AudioEvent_StopAmbientAudio StopAmbientAudio;
-    // pausing ambient music
+    // pausing ambient audio
     public static AudioEvent_PauseAmbientAudio PauseAmbientAudio;
     
     
