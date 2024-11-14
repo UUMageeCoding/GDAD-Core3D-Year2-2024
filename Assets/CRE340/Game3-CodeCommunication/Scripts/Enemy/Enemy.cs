@@ -108,7 +108,10 @@ public class Enemy : EnemyBase
         Debug.Log("Enemy has died");
 
         // Increase the player's score based on enemy health
-        GameManager.Instance.AddScore(10 * enemyData.health);
+        GameManager.Instance.AddScore(4 * enemyData.health);
+        
+        // Increase the player's experience based on enemy health
+        GameManager.Instance.AddExperience(1 * enemyData.health);
     }
 
     public override void Move()

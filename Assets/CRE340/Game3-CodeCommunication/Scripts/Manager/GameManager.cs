@@ -40,7 +40,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string playerName = "Player1"; // Default player name
     [SerializeField] private int playerHealth = 100;        // Default health
     [SerializeField] private int score = 0;                 // Default score
-
+    [SerializeField] private int experience = 0;            // Default experience
+    [SerializeField] private int coins = 0;                 // Default coins
+    
     // Public properties to access these fields but prevent external modification
     public string PlayerName
     {
@@ -71,6 +73,27 @@ public class GameManager : MonoBehaviour
             UIEventHandler.ScoreChanged(score); // Notify listeners
         }
     }
+    
+    public int Experience
+    {
+        get { return experience; }
+        private set
+        {
+            experience = value;
+            UIEventHandler.ExperienceChanged(experience); // Notify listeners
+        }
+    }
+    
+    public int Coins
+    {
+        get { return coins; }
+        private set
+        {
+            coins = value;
+            UIEventHandler.CoinsChanged(coins); // Notify listeners
+        }
+    }
+    
     #endregion
 
 
@@ -119,6 +142,18 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         Score += points;
+    }
+    
+    // Method to increase the experience
+    public void AddExperience(int points)
+    {
+        Experience += points;
+    }
+    
+    // Method to increase the coins
+    public void AddCoins(int amount)
+    {
+        Coins += amount;
     }
 
     // Method to restart the current level

@@ -19,6 +19,8 @@ public class UI_EventListener : MonoBehaviour
         UIEventHandler.OnPlayerNameChanged += UpdatePlayerName;
         UIEventHandler.OnPlayerHealthChanged += UpdatePlayerHealth;
         UIEventHandler.OnScoreChanged += UpdateScore;
+        UIEventHandler.OnExperienceChanged += UpdateExperience;
+        UIEventHandler.OnCoinsChanged += UpdateCoins;
     }
 
     private void OnDisable()
@@ -27,6 +29,8 @@ public class UI_EventListener : MonoBehaviour
         UIEventHandler.OnPlayerNameChanged -= UpdatePlayerName;
         UIEventHandler.OnPlayerHealthChanged -= UpdatePlayerHealth;
         UIEventHandler.OnScoreChanged -= UpdateScore;
+        UIEventHandler.OnExperienceChanged -= UpdateExperience;
+        UIEventHandler.OnCoinsChanged -= UpdateCoins;
     }
 
     // Update the player name in the UI
@@ -53,6 +57,24 @@ public class UI_EventListener : MonoBehaviour
         if(uiDisplay != null)
         {
             uiDisplay.UpdateScore(score);
+        }
+    }
+    
+    // Update the experience in the UI
+    private void UpdateExperience(int experience)
+    {
+        if(uiDisplay != null)
+        {
+            uiDisplay.UpdateExperience(experience);
+        }
+    }
+    
+    // Update the coins in the UI
+    private void UpdateCoins(int coins)
+    {
+        if(uiDisplay != null)
+        {
+            uiDisplay.UpdateCoins(coins);
         }
     }
 }

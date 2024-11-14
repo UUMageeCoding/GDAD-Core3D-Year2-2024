@@ -4,16 +4,15 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerProperties
 {
-    public int level;
+    public string name;
     public int health;
     public int experience;
     public int coins;
     public List<string> inventory;
 
-    public PlayerProperties(int level, int health, int experience, int coins, List<string> inventory)
+    public PlayerProperties(string name, int experience, int coins, List<string> inventory)
     {
-        this.level = level;
-        this.health = health;
+        this.name = name;
         this.experience = experience;
         this.coins = coins;
         this.inventory = inventory;
@@ -22,7 +21,7 @@ public class PlayerProperties
     // Default constructor for empty player data
     public PlayerProperties()
     {
-        level = 1;
+        name = "Player";
         health = 100;
         experience = 0;
         coins = 0;
