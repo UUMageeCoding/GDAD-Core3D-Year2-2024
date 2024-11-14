@@ -99,11 +99,17 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         saveLoadManager = FindObjectOfType<SaveLoadManager>();
-        saveLoadManager.LoadData();
+        //saveLoadManager.LoadData();
+        //LoadData();
         Debug.Log("GameManager initialized with default player state:");
     }
 
     private void OnApplicationQuit()
+    {
+        saveLoadManager.SaveData();
+    }
+
+    private void OnDisable()
     {
         saveLoadManager.SaveData();
     }
@@ -145,16 +151,76 @@ public class GameManager : MonoBehaviour
     public void AddExperience(int points)
     {
         Experience += points;
+        UIEventHandler.ExperienceChanged(experience);
+        saveLoadManager.playerProperties.experience = experience;
+        saveLoadManager.SaveData();
     }
 
     public void AddCoins(int amount)
     {
-        Coins += amount;
+        coins += amount;
+        UIEventHandler.CoinsChanged(coins);
+        saveLoadManager.playerProperties.coins = coins;
+        saveLoadManager.SaveData();
     }
-
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ClearData()
+    {
+        // Reset GameManager properties
+        playerName = "Player1";
+        playerHealth = 100;
+        score = 0;
+        experience = 0;
+        coins = 0;
+
+        // Notify UI about the changes
+        UIEventHandler.PlayerNameChanged(playerName);
+        UIEventHandler.PlayerHealthChanged(playerHealth);
+        UIEventHandler.ScoreChanged(score);
+        UIEventHandler.ExperienceChanged(experience);
+        UIEventHandler.CoinsChanged(coins);
+        
+        saveLoadManager.ClearData();
+    }
+
+    public void LoadData()
+    {
+        saveLoadManager.LoadData();
+        
+        //get the loaded data
+        GetSaveData();
+        
+        // Update UI with loaded data
+        UpdateUI();
+    }
+
+    public void SaveData(){
+        saveLoadManager.SaveData();
+        
+        //get the loaded data
+        GetSaveData();
+        
+        // Update UI with loaded data
+        UpdateUI();
+    }
+    
+    private void GetSaveData(){
+        playerName = saveLoadManager.playerProperties.name;
+        playerHealth = 100;
+        score = 0;
+        experience = saveLoadManager.playerProperties.experience;
+        coins = saveLoadManager.playerProperties.coins;
+    }
+    private void UpdateUI(){
+        UIEventHandler.PlayerNameChanged(playerName);
+        UIEventHandler.PlayerHealthChanged(playerHealth);
+        UIEventHandler.ScoreChanged(score);
+        UIEventHandler.ExperienceChanged(experience);
+        UIEventHandler.CoinsChanged(coins);
     }
 
     #endregion

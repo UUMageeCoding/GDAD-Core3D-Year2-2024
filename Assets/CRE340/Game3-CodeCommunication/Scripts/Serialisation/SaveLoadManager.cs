@@ -1,9 +1,18 @@
+// SaveLoadManager.cs
 using System.IO;
 using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
+    [Header("Save and Load Options")]
+    [Space(10)]
+    public bool autoLoad; // Option to auto-load data
+    public bool autoSave; // New public boolean option to auto-save data
+
+    [Header("Player Properties to Save and Load")]
+    [Space(10)]
     public PlayerProperties playerProperties;
+
     private string filePath;
 
     private void Awake()
@@ -14,6 +23,26 @@ public class SaveLoadManager : MonoBehaviour
         if (playerProperties == null)
         {
             playerProperties = new PlayerProperties();
+        }
+
+
+    }
+
+    private void Start()
+    {
+        // Auto-load data if the option is enabled
+        if (autoLoad)
+        {
+            GameManager.Instance.LoadData(); // Call the LoadData method from the GameManager
+        }
+    }
+
+    private void OnDisable()
+    {
+        // Auto-save data if the option is enabled and not currently loading
+        if (autoSave)
+        {
+            SaveData();
         }
     }
 
@@ -27,6 +56,7 @@ public class SaveLoadManager : MonoBehaviour
 
     public void LoadData()
     {
+
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
@@ -37,8 +67,9 @@ public class SaveLoadManager : MonoBehaviour
         {
             Debug.LogWarning("Save file not found at " + filePath);
         }
+
     }
-    
+
     public void ClearData()
     {
         if (File.Exists(filePath))
@@ -55,7 +86,7 @@ public class SaveLoadManager : MonoBehaviour
         playerProperties = new PlayerProperties();
     }
 
-    // Example to modify player properties in-game (e.g., button triggers)
+    // Example to modify player properties lists - not used currently
     public void AddToInventory(string item)
     {
         playerProperties.inventory.Add(item);
@@ -79,4 +110,5 @@ public class SaveLoadManager : MonoBehaviour
         playerProperties.name = name;
         Debug.Log("Player name set to " + name);
     }
+    
 }
