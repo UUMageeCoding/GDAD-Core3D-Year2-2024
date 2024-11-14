@@ -290,7 +290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1159142112070311338
 RectTransform:
   m_ObjectHideFlags: 0
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'XP : 00'
+  m_text: 'XP : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d90c42919ce11cf4c8d0c061c5764c13, type: 2}
   m_sharedMaterial: {fileID: -8212579064444525704, guid: d90c42919ce11cf4c8d0c061c5764c13,
@@ -747,7 +747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6615159637709460031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coins : 00'
+  m_text: 'Coins : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d90c42919ce11cf4c8d0c061c5764c13, type: 2}
   m_sharedMaterial: {fileID: -8212579064444525704, guid: d90c42919ce11cf4c8d0c061c5764c13,
@@ -1940,7 +1940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8194097949493690724
 RectTransform:
   m_ObjectHideFlags: 0
