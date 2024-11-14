@@ -38,6 +38,22 @@ public class SaveLoadManager : MonoBehaviour
             Debug.LogWarning("Save file not found at " + filePath);
         }
     }
+    
+    public void ClearData()
+    {
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            Debug.Log("Save data cleared from " + filePath);
+        }
+        else
+        {
+            Debug.LogWarning("No save file to delete at " + filePath);
+        }
+
+        // Reset player properties to default state
+        playerProperties = new PlayerProperties();
+    }
 
     // Example to modify player properties in-game (e.g., button triggers)
     public void AddToInventory(string item)
@@ -50,5 +66,17 @@ public class SaveLoadManager : MonoBehaviour
     {
         playerProperties.experience += amount;
         Debug.Log("Gained " + amount + " experience. Total: " + playerProperties.experience);
+    }
+
+    public void AddCoins(int amount)
+    {
+        playerProperties.coins += amount;
+        Debug.Log("Gained " + amount + " coins. Total: " + playerProperties.coins);
+    }
+
+    public void SetPlayerName(string name)
+    {
+        playerProperties.name = name;
+        Debug.Log("Player name set to " + name);
     }
 }
