@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c41754764d8d442aabc6a93b760e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Niall
+  playerName: Player
   health: 100
   dieEffectPrefab: {fileID: 2266959994559975120, guid: 05b09e4a1f3b1d44bb86d2f25468b730,
     type: 3}

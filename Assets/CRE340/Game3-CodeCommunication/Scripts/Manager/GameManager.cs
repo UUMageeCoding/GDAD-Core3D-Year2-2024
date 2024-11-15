@@ -99,19 +99,30 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         saveLoadManager = FindObjectOfType<SaveLoadManager>();
-        //saveLoadManager.LoadData();
-        //LoadData();
-        Debug.Log("GameManager initialized with default player state:");
+        if (saveLoadManager == null)
+        {
+            Debug.LogError("SaveLoadManager not found in the scene.");
+        }
+        else
+        {
+            if (saveLoadManager.autoLoad){
+                LoadData();
+            }
+        }
     }
 
     private void OnApplicationQuit()
     {
-        saveLoadManager.SaveData();
+        if (saveLoadManager.autoSave){
+            saveLoadManager.SaveData();
+        }
     }
 
     private void OnDisable()
     {
-        saveLoadManager.SaveData();
+        if (saveLoadManager.autoSave){
+            saveLoadManager.SaveData();
+        }
     }
 
     #endregion
@@ -153,7 +164,9 @@ public class GameManager : MonoBehaviour
         Experience += points;
         UIEventHandler.ExperienceChanged(experience);
         saveLoadManager.playerProperties.experience = experience;
-        saveLoadManager.SaveData();
+        if (saveLoadManager.autoSave){
+            saveLoadManager.SaveData();
+        }
     }
 
     public void AddCoins(int amount)
@@ -161,30 +174,26 @@ public class GameManager : MonoBehaviour
         coins += amount;
         UIEventHandler.CoinsChanged(coins);
         saveLoadManager.playerProperties.coins = coins;
-        saveLoadManager.SaveData();
+        if(saveLoadManager.autoSave){
+            saveLoadManager.SaveData();
+        }
     }
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    #endregion 
+    
     public void ClearData()
     {
         // Reset GameManager properties
-        playerName = "Player1";
-        playerHealth = 100;
-        score = 0;
-        experience = 0;
-        coins = 0;
-
-        // Notify UI about the changes
-        UIEventHandler.PlayerNameChanged(playerName);
-        UIEventHandler.PlayerHealthChanged(playerHealth);
-        UIEventHandler.ScoreChanged(score);
-        UIEventHandler.ExperienceChanged(experience);
-        UIEventHandler.CoinsChanged(coins);
+        ResetData();
         
         saveLoadManager.ClearData();
+        
+        // Notify UI about the changes
+        UpdateUI();
     }
 
     public void LoadData()
@@ -208,6 +217,13 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
     
+    private void ResetData(){
+        playerName = "Player1";
+        playerHealth = 100;
+        score = 0;
+        experience = 0;
+        coins = 0;
+    }
     private void GetSaveData(){
         playerName = saveLoadManager.playerProperties.name;
         playerHealth = 100;
@@ -223,5 +239,8 @@ public class GameManager : MonoBehaviour
         UIEventHandler.CoinsChanged(coins);
     }
 
-    #endregion
+    
+    
+    
+
 }

@@ -15,6 +15,7 @@ public class SaveLoadManager : MonoBehaviour
 
     private string filePath;
 
+    
     private void Awake()
     {
         filePath = Application.persistentDataPath + "/playerData.json";
@@ -24,36 +25,11 @@ public class SaveLoadManager : MonoBehaviour
         {
             playerProperties = new PlayerProperties();
         }
-
-
+        
+        //LoadData(); // Call the LoadData method to retrieve saved data from the file
+        
     }
-
-    private void Start()
-    {
-        // Auto-load data if the option is enabled
-        if (autoLoad)
-        {
-            GameManager.Instance.LoadData(); // Call the LoadData method from the GameManager
-        }
-    }
-
-    private void OnDisable()
-    {
-        // Auto-save data if the option is enabled and not currently loading
-        if (autoSave)
-        {
-            SaveData();
-        }
-    }
-
-    public void SaveData()
-    {
-        // Convert the player data to JSON format
-        string json = JsonUtility.ToJson(playerProperties, true);
-        File.WriteAllText(filePath, json);
-        Debug.Log("Data saved to " + filePath);
-    }
-
+    
     public void LoadData()
     {
 
@@ -69,6 +45,15 @@ public class SaveLoadManager : MonoBehaviour
         }
 
     }
+    public void SaveData()
+    {
+        // Convert the player data to JSON format
+        string json = JsonUtility.ToJson(playerProperties, true);
+        File.WriteAllText(filePath, json);
+        Debug.Log("Data saved to " + filePath);
+    }
+
+
 
     public void ClearData()
     {
