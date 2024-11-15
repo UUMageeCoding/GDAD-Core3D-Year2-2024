@@ -13,8 +13,8 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Awake()
     {
-        // Set the player name and initialize player stats
-        gameObject.name = playerName;
+        // Get the loaded player name and initialize player stats
+        gameObject.name = GameManager.Instance.PlayerName;
         Debug.Log($"Player {playerName} spawned with {health} health.");
     }
 
