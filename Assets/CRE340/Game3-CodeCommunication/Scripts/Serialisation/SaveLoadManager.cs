@@ -1,4 +1,4 @@
-// SaveLoadManager.cs
+// Purpose: Save and load player data to and from a JSON file.
 using System.IO;
 using UnityEngine;
 
@@ -13,11 +13,12 @@ public class SaveLoadManager : MonoBehaviour
     [Space(10)]
     public PlayerProperties playerProperties;
 
-    private string filePath;
+    private string filePath; // File path to save and load data
 
-    
+    #region Setup and Initialization
     private void Awake()
     {
+        // Set the file path to the persistent data path
         filePath = Application.persistentDataPath + "/playerData.json";
 
         // Initialize with default data if no existing data is loaded
@@ -25,11 +26,10 @@ public class SaveLoadManager : MonoBehaviour
         {
             playerProperties = new PlayerProperties();
         }
-        
-        //LoadData(); // Call the LoadData method to retrieve saved data from the file
-        
     }
+    #endregion
     
+    #region Save Load Clear Data
     public void LoadData()
     {
 
@@ -52,9 +52,7 @@ public class SaveLoadManager : MonoBehaviour
         File.WriteAllText(filePath, json);
         Debug.Log("Data saved to " + filePath);
     }
-
-
-
+    
     public void ClearData()
     {
         if (File.Exists(filePath))
@@ -70,8 +68,9 @@ public class SaveLoadManager : MonoBehaviour
         // Reset player properties to default state
         playerProperties = new PlayerProperties();
     }
-
-    // Example to modify player properties lists - not used currently
+    #endregion
+    
+    #region Modify Player Data Methods
     public void AddToInventory(string item)
     {
         playerProperties.inventory.Add(item);
@@ -95,5 +94,6 @@ public class SaveLoadManager : MonoBehaviour
         playerProperties.name = name;
         Debug.Log("Player name set to " + name);
     }
+    #endregion
     
 }
