@@ -1429,7 +1429,6 @@ GameObject:
   - component: {fileID: 7163997591275144508}
   - component: {fileID: 3766204151731176168}
   - component: {fileID: 8742277093165709505}
-  - component: {fileID: 1119536766875756889}
   m_Layer: 5
   m_Name: Performance Monitor
   m_TagString: Untagged
@@ -1554,19 +1553,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1119536766875756889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4091634928538493980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9b1972b83039e498f9eccf30c756df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  performanceText: {fileID: 8742277093165709505}
 --- !u!1 &4324185716161155100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,19 +1673,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7246742221840558467}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CacheBenchmark, Assembly-CSharp
-        m_MethodName: RunBenchmarks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5060681923013910325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,19 +1794,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1368092722458927365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1119536766875756889}
-        m_TargetAssemblyTypeName: PerformanceMonitor, Assembly-CSharp
-        m_MethodName: BenchmarkMethod
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5621004301386743103
 GameObject:
   m_ObjectHideFlags: 0
