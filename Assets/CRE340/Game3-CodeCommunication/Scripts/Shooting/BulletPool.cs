@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class BulletPool : MonoBehaviour
 {
     public GameObject bulletPrefab; // The prefab to pool
-    public int poolSize = 10; // Number of bullets in the pool
+    public int poolSize = 30; // Number of bullets in the pool
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
@@ -14,6 +14,7 @@ public class BulletPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab);
+            bullet.transform.parent = transform; // Set the pool as the parent
             bullet.SetActive(false); // Disable bullets by default
             pool.Enqueue(bullet);
         }

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
@@ -10,6 +9,9 @@ public class Shoot : MonoBehaviour
     public float shootCooldown = 0.1f; // Cooldown in seconds between shots
 
     private float lastShootTime = -100f; // Initialize to a low value
+    private BulletPool bulletPool; // Reference to the bullet pool manager
+
+    public bool useObjectPooling = true; // Toggle for object pooling
 
     void Start()
     {
@@ -21,9 +23,11 @@ public class Shoot : MonoBehaviour
             bulletSpawnPoint.parent = transform; // Set it as a child of the player
             bulletSpawnPoint.position = transform.position + transform.forward + new Vector3(0, 0.2f, 0); // Slightly in front of the player
         }
+
+        // Find the BulletPool component
+        bulletPool = FindObjectOfType<BulletPool>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Check for spacebar input and shoot if cooldown has elapsed
@@ -36,27 +40,37 @@ public class Shoot : MonoBehaviour
 
     void Fire()
     {
-        // Instantiate the bullet prefab at the bullet spawn point position and rotation
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        GameObject bullet;
 
-        // Calculate the bullet's direction using the player's forward direction
-        Vector3 bulletDirection = transform.forward; // Use the player's forward direction
+        if (useObjectPooling && bulletPool != null)
+        {
+            // Use object pooling
+            bullet = bulletPool.GetBullet();
+            bullet.transform.position = bulletSpawnPoint.position;
+            bullet.transform.rotation = bulletSpawnPoint.rotation;
+            bullet.transform.parent = bulletPool.transform; // Set the pool as the parent
+        }
+        else
+        {
+            // Non-object pooling fallback
+            bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        }
 
-        // Add a Rigidbody to the bullet and set its velocity
+        // Set bullet velocity
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         if (bulletRb != null)
         {
-            bulletRb.velocity = bulletDirection * bulletSpeed;
+            bulletRb.velocity = transform.forward * bulletSpeed;
         }
 
         // Update the last shoot time to enforce cooldown
         lastShootTime = Time.time;
     }
 
-    private void FireEffects(){
-        //TODO - add a muzzle flash effect when shooting??
+    private void FireEffects()
+    {
+        // TODO - Add a muzzle flash effect when shooting
         
-        //TODO - add a camera shake effect when shooting
         FeedbackEventManager.ShakeCamera(5f, 1f, 0.25f);
     }
 }
