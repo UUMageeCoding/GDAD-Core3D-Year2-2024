@@ -41,7 +41,7 @@ public class PerformanceMonitor : MonoBehaviour
 
             // Display Metrics
             performanceText.text =
-                $"FPS: {fps:F2} | Avg FPS: {avgFps:F2}\n" +
+                $"FPS: {fps:F2} \nAvg FPS: {avgFps:F2}\n" +
                 $"CPU Frame Time: {cpuFrameTime:F2} ms \nGPU Frame Time: {gpuFrameTime:F2} ms\n" +
                 $"Memory: {memoryUsed / (1024f * 1024f):F2} MB";
 
@@ -55,22 +55,32 @@ public class PerformanceMonitor : MonoBehaviour
 
     public void BenchmarkMethod()
     {
+        UnityEngine.Debug.Log("Starting benchmark...");
         stopwatch.Reset();
         stopwatch.Start();
 
-        // Example code to benchmark
         PerformHeavyCalculation();
 
         stopwatch.Stop();
-        UnityEngine.Debug.Log($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+        UnityEngine.Debug.Log($"Benchmark completed. Execution Time: {stopwatch.ElapsedMilliseconds} ms");
     }
 
     private void PerformHeavyCalculation()
     {
-        // Example of heavy computation
-        for (int i = 0; i < 1000000; i++)
+        int[] numbers = new int[10000000];
+        for (int i = 0; i < numbers.Length; i++)
         {
-            Mathf.Sqrt(i);
+            numbers[i] = Random.Range(0, 10000); // Fill the array with random numbers
+
+            // Log progress at every 100,000 iterations
+            if (i % 100000 == 0)
+            {
+                UnityEngine.Debug.Log($"Processing... {i} iterations completed.");
+            }
         }
+
+        // Sort the array as part of the heavy calculation
+        System.Array.Sort(numbers);
+        UnityEngine.Debug.Log("Sorting completed.");
     }
 }
