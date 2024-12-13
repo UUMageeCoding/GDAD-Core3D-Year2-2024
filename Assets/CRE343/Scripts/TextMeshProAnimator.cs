@@ -62,3 +62,4 @@ public class TextMeshProAnimator : MonoBehaviour
         textMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.Vertices);
     }
 }
+
